@@ -146,7 +146,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <div className="text-[10px] uppercase font-bold text-zinc-500 tracking-wider mb-1">Email us</div>
-                    <div className="text-lg font-medium group-hover:text-blue-400 transition-colors">contact@scaledesk.technology</div>
+                    <div className="text-lg font-medium group-hover:text-blue-400 transition-colors">contact@scaledesktechnology.com</div>
                   </div>
                 </div>
               </div>
@@ -158,7 +158,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <div className="text-[10px] uppercase font-bold text-zinc-500 tracking-wider mb-1">Visit us</div>
-                    <div className="text-lg font-medium group-hover:text-indigo-400 transition-colors">Innovation Hub, San Francisco</div>
+                    <div className="text-lg font-medium group-hover:text-indigo-400 transition-colors">Mau, Uttar Pradesh</div>
                   </div>
                 </div>
               </div>
@@ -170,7 +170,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <div className="text-[10px] uppercase font-bold text-zinc-500 tracking-wider mb-1">Call us</div>
-                    <div className="text-lg font-medium group-hover:text-cyan-400 transition-colors">+1 (800) SCALE-TECH</div>
+                    <div className="text-lg font-medium group-hover:text-cyan-400 transition-colors">+91 9129937749</div>
                   </div>
                 </div>
               </div>
