@@ -55,11 +55,13 @@ export const metadata = buildPageMetadata({
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full antialiased">
+    
       <head>
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
       </head>
+    <script src="https://wap-production-ce44.up.railway.app/api/public/widget/dI0a6XETdWzXDuYq.js" async></script>
       <body
         className={`min-h-full flex flex-col bg-black text-white ${inter.className} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
       >
