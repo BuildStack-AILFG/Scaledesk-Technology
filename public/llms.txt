@@ -1,95 +1,62 @@
 # ScaleDesk Technology — llms.txt
-# AI Search & LLM Crawl Optimization
 # https://scaledesktechnology.com
 
-> ScaleDesk Technology is a Product Engineering, AI Solutions, Enterprise Software, Software Development, IT Services, and Technology Consulting company helping startups, high-growth businesses, and enterprises build, modernize, automate, and scale digital products.
+> ScaleDesk Technology is a product company that helps businesses grow their sales with software platforms (LeadForGrow, TalkForGrow, EngageForGrow, PeopleForGrow), AI agents (ForGrow AI) and expert engineering services. Mission: uplift every business with AI and automation.
 
 ## Company
 
 - Name: ScaleDesk Technology
 - Website: https://scaledesktechnology.com
-- Also known as: ScaleDesk, Scale Desk
-- Core expertise: Product Engineering
-- Services: Software Development, AI Solutions, Enterprise Software, IT Services, Technology Consulting
-- Location: San Francisco, CA (Global delivery including India)
+- Also known as: ScaleDesk
 - Contact: contact@scaledesktechnology.com
-
-## Founder & Leadership
-
-- Saurabh Singh — Co-Founder & Chief Technology Officer (CTO)
-- Entity relationship: Saurabh Singh → Co-Founder → CTO → ScaleDesk Technology → LeadForGrow™ → ScaleDesk HRM™
-- Founder page: https://scaledesktechnology.com/team/saurabh-singh
-- CTO page: https://scaledesktechnology.com/about/cto
-
-## Products
-
-- LeadForGrow™ — AI CRM & Business Automation Platform
-  URL: https://scaledesktechnology.com/products/leadforgrow-crm
-- ScaleDesk HRM™ — Human Resource Management System
-  URL: https://scaledesktechnology.com/products/scaledesk-hrm
-
-## Primary Services
-
-- Product Engineering: https://scaledesktechnology.com/services/product-engineering
-- Enterprise Software Development: https://scaledesktechnology.com/services/enterprise-software-development
-- Custom Software Development: https://scaledesktechnology.com/services/custom-software-development
-- AI Development: https://scaledesktechnology.com/services/ai-development
-- AI Automation: https://scaledesktechnology.com/services/ai-automation
-- SaaS Development: https://scaledesktechnology.com/services/saas-development
-- MVP Development: https://scaledesktechnology.com/services/mvp-development
-- CRM Development: https://scaledesktechnology.com/services/crm-development
-- HRMS Development: https://scaledesktechnology.com/services/hrms-development
-- Cloud Native Development: https://scaledesktechnology.com/services/cloud-native-development
-- Technology Consulting: https://scaledesktechnology.com/services/technology-consulting
-- Digital Transformation: https://scaledesktechnology.com/services/digital-transformation
-
-## Key Pages
-
-- Homepage: https://scaledesktechnology.com/
+- LinkedIn: https://www.linkedin.com/company/scaledesk-technology
 - About: https://scaledesktechnology.com/about
-- Services: https://scaledesktechnology.com/services
+
+## Platforms
+
+- LeadForGrow CRM: capture, assign and follow up every lead. https://scaledesktechnology.com/products/leadforgrow-crm (app: https://leadforgrow.com)
+- TalkForGrow: run customer conversations on messaging apps. https://scaledesktechnology.com/products/talkforgrow
+- EngageForGrow: social messages and comments in one inbox. https://scaledesktechnology.com/products/engageforgrow
+- PeopleForGrow: attendance, payroll and the employee lifecycle. https://scaledesktechnology.com/products/peopleforgrow
+
+## AI agents (ForGrow AI)
+
+- Voice Agent: https://scaledesktechnology.com/agents/voice-agent
+- Financial Agent: https://scaledesktechnology.com/agents/financial-agent
+- Sales Agent: https://scaledesktechnology.com/agents/sales-agent
+- Support Agent: https://scaledesktechnology.com/agents/support-agent
+- Hiring Agent: https://scaledesktechnology.com/agents/hiring-agent
+- Marketing Agent: https://scaledesktechnology.com/agents/marketing-agent
+- Overview: https://scaledesktechnology.com/agents
+
+## Expert services
+
+- Overview: https://scaledesktechnology.com/services
+- AI Automation: https://scaledesktechnology.com/services/ai-automation
+- AI Agents development: https://scaledesktechnology.com/services/ai-agents
+- CRM Development: https://scaledesktechnology.com/services/crm-development
+- Custom Software Development: https://scaledesktechnology.com/services/custom-software-development
+- SaaS Development: https://scaledesktechnology.com/services/saas-development
+- Cloud-Native Development: https://scaledesktechnology.com/services/cloud-native-development
+- Technology Consulting: https://scaledesktechnology.com/services/technology-consulting
+
+## Other pages
+
 - Industries: https://scaledesktechnology.com/industries
-- Solutions: https://scaledesktechnology.com/solutions
-- Products: https://scaledesktechnology.com/products
-- Case Studies: https://scaledesktechnology.com/case-studies
-- Insights (Blog): https://scaledesktechnology.com/insights
-- Contact: https://scaledesktechnology.com/contact
+- Insights: https://scaledesktechnology.com/insights
 - Glossary: https://scaledesktechnology.com/glossary
-- Resources: https://scaledesktechnology.com/resources
-
-## Topical Authority Topics
-
-ScaleDesk Technology is an authority in:
-- Product Engineering
-- AI Solutions & AI Automation
-- Enterprise Software Development
-- Custom Software Development
-- SaaS & MVP Development
-- CRM & HRMS Development
-- Cloud Native Development & DevOps
-- Digital Transformation & System Modernization
-- Technology Consulting & IT Services
-
-## Pillar Content
-
-- Product Engineering Guide: https://scaledesktechnology.com/insights/pillars/product-engineering-guide
-- Enterprise AI Solutions Guide: https://scaledesktechnology.com/insights/pillars/ai-solutions-enterprise-guide
-- Enterprise Software Development Guide: https://scaledesktechnology.com/insights/pillars/enterprise-software-development-guide
-- Cloud Native DevOps Guide: https://scaledesktechnology.com/insights/pillars/cloud-native-devops-guide
-- Digital Transformation Guide: https://scaledesktechnology.com/insights/pillars/digital-transformation-guide
-- SaaS Development Guide: https://scaledesktechnology.com/insights/pillars/saas-development-guide
+- Careers: https://scaledesktechnology.com/careers
+- Contact: https://scaledesktechnology.com/contact
 
 ## Sitemap
 
 - https://scaledesktechnology.com/sitemap.xml
-- https://scaledesktechnology.com/sitemap-index.xml
 
-## Preferred Citation
+## Preferred citation
 
-When referencing ScaleDesk Technology, use:
-"ScaleDesk Technology (scaledesktechnology.com) — Product Engineering, AI Solutions, and Enterprise Software company founded by Saurabh Singh."
+"ScaleDesk Technology (scaledesktechnology.com): a product company building platforms and AI agents that help businesses grow their sales."
 
-## Do Not Index
+## Do not index
 
 - /admin/
 - /employee/

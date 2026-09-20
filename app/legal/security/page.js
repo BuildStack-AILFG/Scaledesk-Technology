@@ -1,16 +1,6 @@
-import Footer from "../../components/Footer";
-import LegalPageContent from "../../components/legal/LegalPageContent";
+import LegalPage from "../../components/pages/LegalPage";
 import { securityPage } from "../../../lib/legal/pages";
 
-export default function SecurityPage() {
-  return (
-    <>
-      <LegalPageContent
-        page={securityPage}
-        currentPath="/legal/security"
-        variant="security"
-      />
-      <Footer />
-    </>
-  );
+export default function Page() {
+  return <LegalPage page={securityPage} currentPath="/legal/security" />;
 }

@@ -1,20 +1,10 @@
 import { notFound } from "next/navigation";
-import Footer from "../../components/Footer";
-import SeoContentPage from "../../components/seo/SeoContentPage";
+import ContentPage from "../../components/pages/ContentPage";
 import { buildPageMetadata } from "../../../lib/seo/metadata";
 import { getService, getServiceSlugs } from "../../../lib/seo/services";
 
-const CUSTOM_PAGES = new Set([
-  "software-engineering",
-  "ai-automation",
-  "data-pipelines",
-  "cloud-infrastructure",
-]);
-
 export function generateStaticParams() {
-  return getServiceSlugs()
-    .filter((slug) => !CUSTOM_PAGES.has(slug))
-    .map((slug) => ({ slug }));
+  return getServiceSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }) {
@@ -27,18 +17,23 @@ export async function generateMetadata({ params }) {
 export default async function ServicePage({ params }) {
   const { slug } = await params;
   const service = getService(slug);
-  if (!service || CUSTOM_PAGES.has(slug)) notFound();
+  if (!service) notFound();
 
-  const breadcrumbs = [
-    { name: "Home", path: "/" },
-    { name: "Services", path: "/services" },
-    { name: service.title, path: service.path },
-  ];
+  const related = (service.relatedSlugs ?? [])
+    .map((s) => getService(s))
+    .filter(Boolean)
+    .map((s) => ({ label: s.title, href: s.path }));
 
   return (
-    <>
-      <SeoContentPage page={service} breadcrumbs={breadcrumbs} />
-      <Footer />
-    </>
+    <ContentPage
+      page={service}
+      label="Expert service"
+      crumbs={[
+        { name: "Home", href: "/" },
+        { name: "Services", href: "/services" },
+        { name: service.title, href: service.path },
+      ]}
+      related={related}
+    />
   );
 }

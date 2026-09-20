@@ -2,12 +2,12 @@ import { buildPageMetadata } from "../../lib/seo/metadata";
 
 export const metadata = buildPageMetadata({
   title: "Contact ScaleDesk Technology",
-  seoTitle: "Contact Product Engineering Team | ScaleDesk Technology",
+  seoTitle: "Contact ScaleDesk Technology | Talk to Our Experts",
   metaDescription:
-    "Contact ScaleDesk Technology for Product Engineering, AI Solutions, Enterprise Software Development, and Technology Consulting. Talk to our engineering team.",
+    "Talk to the ScaleDesk team about our platforms (LeadForGrow, TalkForGrow, EngageForGrow, PeopleForGrow), ForGrow AI agents and expert services.",
   path: "/contact",
   primaryKeyword: "Contact ScaleDesk Technology",
-  secondaryKeywords: ["Product Engineering Consultation", "AI Solutions Contact", "Software Development Inquiry"],
+  secondaryKeywords: ["talk to ScaleDesk", "AI agents enquiry", "CRM platform enquiry"],
 });
 
 export default function Layout({ children }) {

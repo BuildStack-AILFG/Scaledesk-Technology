@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ScaleDesk Technology: website
 
-## Getting Started
+Marketing site for ScaleDesk Technology, a product company that helps businesses grow their sales with
+software platforms (LeadForGrow, TalkForGrow, EngageForGrow, PeopleForGrow), AI agents (ForGrow AI) and
+expert engineering services. Next.js 16 (App Router), React 19, Tailwind CSS 4.
 
-First, run the development server:
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build && npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Read `node_modules/next/dist/docs/` before changing framework-level code (see AGENTS.md).
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Where things live
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| What | Where |
+|---|---|
+| Platforms and their copy | `lib/catalog/platforms.js` |
+| ForGrow AI agents and their copy | `lib/catalog/agents.js` |
+| Header, footer, search index | `lib/nav.js` (derived from the catalog + SEO data) |
+| SEO page data (services, industries, glossary) | `lib/seo/*.js` |
+| Site-wide SEO config, metadata, structured data | `lib/seo/config.js`, `lib/seo/metadata.js`, `lib/seo/schema.js` |
+| Sitemap / robots / llms.txt | `lib/seo/sitemap-urls.js`, `app/robots.js`, `public/llms.txt` |
+| Design system (tokens, buttons, layout) | `app/corporate.css` |
+| Stock photography manifest and credits | `lib/images.js`, `public/images/stock/CREDITS.md` |
+| Page templates | `app/components/catalog/` (platform + agent pages), `app/components/pages/` (everything else) |
+| Redirects for retired pages | `next.config.mjs` |
 
-## Learn More
+Public pages render inside the corporate shell (`app/components/shell/`). The internal `/admin` and
+`/employee` portals render without site chrome (`lib/shellRoutes.js`).
 
-To learn more about Next.js, take a look at the following resources:
+## Content rules
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Only verifiable facts: no invented metrics, certifications, customer logos or testimonials.
+- Stock photos are ambience only; never present them as customers.
+- Names, address, phone and social profiles are declared once in `lib/seo/config.js`; add verified values there.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Configuration
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Runtime secrets (database URI, auth secret, admin credentials) must come from environment variables.
+Do not commit them.

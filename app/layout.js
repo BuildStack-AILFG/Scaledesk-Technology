@@ -1,75 +1,72 @@
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import SmoothScroll from "./components/SmoothScroll";
-import AmbientCanvas from "./components/AmbientCanvas";
-import AtmosphereSystem from "./components/AtmosphereSystem";
+import "./corporate.css";
+import SiteShell from "./components/shell/SiteShell";
 import JsonLd from "./components/seo/JsonLd";
 import { buildPageMetadata } from "../lib/seo/metadata";
 import { siteGraph } from "../lib/seo/schema";
 import { KEYWORDS } from "../lib/seo/config";
+import { getNavData } from "../lib/nav";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  display: "swap",
-  preload: true,
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-space-grotesk",
+  variable: "--font-inter",
   display: "swap",
   preload: true,
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-jetbrains-mono",
-  display: "swap",
-  preload: false,
 });
 
 export const metadata = buildPageMetadata({
-  title: "Product Engineering Company — AI Solutions & Enterprise Software",
-  seoTitle:
-    "ScaleDesk Technology | Product Engineering, AI Solutions & Enterprise Software",
+  title: "Products That Grow Your Business — AI Agents & Platforms",
+  seoTitle: "ScaleDesk Technology | Products That Grow Your Business",
   metaDescription:
-    "ScaleDesk Technology is a Product Engineering company delivering AI Solutions, Enterprise Software Development, Custom Software, IT Services, and Technology Consulting. Products: LeadForGrow™ AI CRM & ScaleDesk HRM™.",
+    "ScaleDesk Technology is a product company that helps businesses grow their sales with platforms such as LeadForGrow, ForGrow AI agents, and expert engineering services.",
   path: "/",
-  primaryKeyword: "Product Engineering Company",
+  primaryKeyword: "AI agents and business growth platforms",
   secondaryKeywords: [
     ...KEYWORDS.brand,
     ...KEYWORDS.core.slice(0, 8),
     ...KEYWORDS.products,
   ],
   longTailKeywords: [
-    "product engineering company India",
-    "AI solutions company for enterprises",
-    "enterprise software development partner",
+    "AI CRM for small business",
+    "AI agents for sales and support",
+    "business messaging and social engagement software",
+    "AI and automation company India",
   ],
 });
 
+/** Browser UI colour and scaling. */
+export const viewport = {
+  themeColor: "#0A2F6B",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({ children }) {
+  // Built on the server and passed down as plain JSON so the client shell does
+  // not bundle the lib/seo content data.
+  const nav = getNavData();
+
   return (
     <html lang="en" className="h-full antialiased">
-    
       <head>
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
       </head>
-    <script src="https://wap-production-ce44.up.railway.app/api/public/widget/dI0a6XETdWzXDuYq.js" async></script>
       <body
-        className={`min-h-full flex flex-col bg-black text-white ${inter.className} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+        className={`min-h-full flex flex-col ${inter.className} ${inter.variable}`}
       >
         <JsonLd data={siteGraph()} />
-        <AtmosphereSystem />
-        <AmbientCanvas />
-        <Navbar />
-        <SmoothScroll>{children}</SmoothScroll>
+        <SiteShell nav={nav}>{children}</SiteShell>
+        {/* Third-party chat widget. Was previously placed directly under <html>
+            (invalid markup); same script, now loaded via next/script. */}
+        <Script
+          src="https://wap-production-ce44.up.railway.app/api/public/widget/dI0a6XETdWzXDuYq.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

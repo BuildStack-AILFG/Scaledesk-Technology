@@ -1,9 +1,7 @@
 import { notFound } from "next/navigation";
-import Footer from "../../components/Footer";
-import CatalogDetail from "../../components/catalog/CatalogDetail";
+import ContentPage from "../../components/pages/ContentPage";
 import { buildPageMetadata } from "../../../lib/seo/metadata";
-import { getIndustry, getIndustrySlugs, INDUSTRIES } from "../../../lib/seo/industries";
-import { getIndustryCatalogItem, getRelatedIndustries } from "../../../lib/seo/catalog-helpers";
+import { getIndustry, getIndustrySlugs } from "../../../lib/seo/industries";
 
 export function generateStaticParams() {
   return getIndustrySlugs().map((slug) => ({ slug }));
@@ -21,21 +19,21 @@ export default async function IndustryDetailPage({ params }) {
   const industry = getIndustry(slug);
   if (!industry) notFound();
 
-  const display = getIndustryCatalogItem(slug);
-  const related = getRelatedIndustries(
-    industry.relatedSlugs?.filter((s) => INDUSTRIES.some((x) => x.slug === s)) || []
-  );
-
-  const breadcrumbs = [
-    { name: "Home", path: "/" },
-    { name: "Industries", path: "/industries" },
-    { name: industry.title, path: industry.path },
-  ];
+  const related = (industry.relatedSlugs ?? [])
+    .map((s) => getIndustry(s))
+    .filter(Boolean)
+    .map((i) => ({ label: i.title, href: i.path }));
 
   return (
-    <>
-      <CatalogDetail page={industry} breadcrumbs={breadcrumbs} display={display} relatedItems={related} />
-      <Footer />
-    </>
+    <ContentPage
+      page={industry}
+      label="Industry"
+      crumbs={[
+        { name: "Home", href: "/" },
+        { name: "Industries", href: "/industries" },
+        { name: industry.title, href: industry.path },
+      ]}
+      related={related}
+    />
   );
 }

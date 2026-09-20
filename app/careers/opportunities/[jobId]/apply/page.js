@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Footer from "../../../../components/Footer";
 import JobApplicationForm from "../../../../components/careers/JobApplicationForm";
 import { getJobById } from "../../../../data/careers";
 
@@ -35,12 +34,12 @@ export default async function JobApplyPage({ params }) {
             ← Back to open roles
           </Link>
 
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-[#2F80FF] mb-3">
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-[#0a5fbe] mb-3">
             {job.id}
           </p>
           <h1
             className="text-3xl md:text-4xl font-semibold tracking-tight leading-tight mb-4"
-            style={{ fontFamily: "var(--font-space-grotesk), system-ui, sans-serif" }}
+            style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}
           >
             Apply for {job.title}
           </h1>
@@ -59,8 +58,6 @@ export default async function JobApplyPage({ params }) {
           <JobApplicationForm job={job} />
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

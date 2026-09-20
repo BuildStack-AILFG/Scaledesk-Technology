@@ -1,86 +1,58 @@
-import Link from "next/link";
-import Footer from "../components/Footer";
-import Breadcrumbs from "../components/seo/Breadcrumbs";
 import JsonLd from "../components/seo/JsonLd";
+import PageHero from "../components/pages/PageHero";
+import HubList from "../components/pages/HubList";
+import HomeCta from "../components/home/HomeCta";
 import { buildPageMetadata } from "../../lib/seo/metadata";
 import { pageGraph, collectionPageSchema } from "../../lib/seo/schema";
-import { SERVICES } from "../../lib/seo/services";
+import { getService } from "../../lib/seo/services";
+import { SERVICES_NAV } from "../../lib/nav";
+import { snippet } from "../../lib/text";
 
 const PAGE_DESCRIPTION =
-  "ScaleDesk Technology services — Product Engineering, AI Development, Enterprise Software, SaaS, MVP, CRM, HRMS, Cloud Native, DevOps, and Technology Consulting.";
+  "Expert services from ScaleDesk Technology to go with our platforms: AI and automation, custom software, CRM and HRMS development, cloud, data and technology consulting.";
 
 export const metadata = buildPageMetadata({
-  title: "Product Engineering & Software Development Services",
-  seoTitle: "Product Engineering & IT Services Company | ScaleDesk Technology",
+  title: "Expert Services — AI, Automation & Software Engineering",
+  seoTitle: "AI, Automation & Software Services | ScaleDesk Technology",
   metaDescription: PAGE_DESCRIPTION,
   path: "/services",
-  primaryKeyword: "Product Engineering Services",
-  secondaryKeywords: [
-    "Software Development Company",
-    "IT Services Company",
-    "AI Development Company",
-    "Enterprise Software Development",
-  ],
+  primaryKeyword: "AI and automation services",
+  secondaryKeywords: ["Custom Software Development", "CRM Development", "AI Development Company", "Technology Consulting"],
 });
 
-const breadcrumbs = [
-  { name: "Home", path: "/" },
-  { name: "Services", path: "/services" },
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: "Services", href: "/services" },
 ];
 
 export default function ServicesHubPage() {
   const graph = pageGraph({
-    breadcrumbs,
-    page: {
-      title: "Services",
-      description: PAGE_DESCRIPTION,
-      path: "/services",
-    },
+    breadcrumbs: crumbs.map((c) => ({ name: c.name, path: c.href })),
+    page: { title: "Services", description: PAGE_DESCRIPTION, path: "/services" },
   });
-  graph["@graph"].push(
-    collectionPageSchema({
-      title: "ScaleDesk Technology Services",
-      description: PAGE_DESCRIPTION,
-      path: "/services",
-    })
-  );
+  graph["@graph"].push(collectionPageSchema({ title: "Services", description: PAGE_DESCRIPTION, path: "/services" }));
+
+  const groups = SERVICES_NAV.map((g) => ({
+    title: g.title,
+    items: g.items.map((it) => {
+      const slug = it.href.split("/").pop();
+      return { name: it.label, href: it.href, blurb: snippet(getService(slug)?.metaDescription, 120) };
+    }),
+  }));
 
   return (
     <>
       <JsonLd data={graph} />
-      <main className="bg-black min-h-screen text-white pt-32 pb-24 px-6">
-        <div className="max-w-[1200px] mx-auto">
-          <Breadcrumbs items={breadcrumbs} />
-          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6">
-            Product Engineering & Software Development Services
-          </h1>
-          <p className="text-xl text-zinc-400 font-light leading-relaxed mb-16 max-w-3xl">
-            ScaleDesk Technology is a Product Engineering company delivering AI Solutions, Enterprise Software Development, Custom Software, SaaS, MVP, CRM, HRMS, Cloud Native, DevOps, and Technology Consulting — led by Co-Founder & CTO{" "}
-            <Link href="/team/saurabh-singh" className="text-blue-400 hover:underline">
-              Saurabh Singh
-            </Link>
-            .
-          </p>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {SERVICES.map((service) => (
-              <Link
-                key={service.slug}
-                href={service.path}
-                className="group p-6 border border-white/10 rounded-xl bg-white/[0.02] hover:border-blue-500/30 hover:bg-white/[0.04] transition-all"
-              >
-                <h2 className="text-lg font-semibold mb-2 group-hover:text-blue-400 transition-colors">
-                  {service.title}
-                </h2>
-                <p className="text-sm text-zinc-500 font-light line-clamp-2">
-                  {service.metaDescription}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </div>
+      <main>
+        <PageHero
+          crumbs={crumbs}
+          label="Expert services"
+          title="Expert services to help you sell more"
+          lead="Alongside our own platforms, our team plans, builds and runs custom technology for your business, from AI and automation to software, cloud and data."
+        />
+        <HubList groups={groups} />
+        <HomeCta />
       </main>
-      <Footer />
     </>
   );
 }

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const BLUE = "#2F80FF";
+const BLUE = "#0a5fbe";
 
 const INITIAL_FORM = {
   fullName: "",
@@ -38,7 +38,7 @@ function Field({ label, required, children, hint }) {
     <label className="block">
       <span className="mb-2 block text-sm font-medium text-zinc-700">
         {label}
-        {required ? <span className="text-[#2F80FF]"> *</span> : null}
+        {required ? <span className="text-[#0a5fbe]"> *</span> : null}
       </span>
       {children}
       {hint ? <span className="mt-1.5 block text-xs text-zinc-400">{hint}</span> : null}
@@ -47,7 +47,7 @@ function Field({ label, required, children, hint }) {
 }
 
 const inputClass =
-  "w-full border border-zinc-200 bg-white px-4 py-3 text-zinc-900 placeholder-zinc-400 focus:border-[#2F80FF] focus:outline-none";
+  "w-full border border-zinc-200 bg-white px-4 py-3 text-zinc-900 placeholder-zinc-400 focus:border-[#0a5fbe] focus:outline-none";
 
 export default function JobApplicationForm({ job }) {
   const [formData, setFormData] = useState(INITIAL_FORM);
@@ -128,7 +128,7 @@ export default function JobApplicationForm({ job }) {
           <p className="font-semibold text-zinc-900 mb-2">Your tracking account is ready</p>
           <p>
             Sign in anytime at{" "}
-            <Link href="/careers/track" className="text-[#2F80FF] font-medium hover:underline">
+            <Link href="/careers/track" className="text-[#0a5fbe] font-medium hover:underline">
               Track Application
             </Link>{" "}
             using:
@@ -278,7 +278,7 @@ export default function JobApplicationForm({ job }) {
             name="resume"
             accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
             onChange={handleResumeChange}
-            className="w-full border border-dashed border-zinc-300 bg-zinc-50 px-4 py-8 text-sm text-zinc-600 file:mr-4 file:border-0 file:bg-[#2F80FF] file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:opacity-90"
+            className="w-full border border-dashed border-zinc-300 bg-zinc-50 px-4 py-8 text-sm text-zinc-600 file:mr-4 file:border-0 file:bg-[#0a5fbe] file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:opacity-90"
           />
         </Field>
         {resume ? (

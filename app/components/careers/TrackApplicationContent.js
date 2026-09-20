@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 
-const BLUE = "#2F80FF";
+const BLUE = "#0a5fbe";
 
 const STATUS_STYLES = {
   submitted: { label: "Submitted", bg: "bg-blue-50", text: "text-blue-700", border: "border-blue-200" },
@@ -13,7 +13,7 @@ const STATUS_STYLES = {
 };
 
 const inputClass =
-  "w-full border border-zinc-200 bg-white px-4 py-3 text-zinc-900 placeholder-zinc-400 focus:border-[#2F80FF] focus:outline-none";
+  "w-full border border-zinc-200 bg-white px-4 py-3 text-zinc-900 placeholder-zinc-400 focus:border-[#0a5fbe] focus:outline-none";
 
 function formatDate(iso) {
   return new Date(iso).toLocaleDateString("en-IN", {
@@ -44,7 +44,7 @@ function ApplicationCard({ app }) {
       <div className="p-6 md:p-8">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-[#2F80FF] mb-2">
+            <p className="text-[10px] font-semibold uppercase tracking-widest text-[#0a5fbe] mb-2">
               {app.jobId}
             </p>
             <h3 className="text-xl font-semibold text-zinc-900">{app.jobTitle}</h3>
@@ -60,7 +60,7 @@ function ApplicationCard({ app }) {
           <ol className="space-y-3">
             {(app.statusHistory || []).map((entry, i) => (
               <li key={`${entry.at}-${i}`} className="flex gap-3 text-sm">
-                <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#2F80FF]" />
+                <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#0a5fbe]" />
                 <div>
                   <p className="font-medium text-zinc-800">
                     {STATUS_STYLES[entry.status]?.label || entry.status}
@@ -76,7 +76,7 @@ function ApplicationCard({ app }) {
         <button
           type="button"
           onClick={() => setExpanded(!expanded)}
-          className="text-sm font-semibold text-[#2F80FF] hover:underline"
+          className="text-sm font-semibold text-[#0a5fbe] hover:underline"
         >
           {expanded ? "Hide details" : "View application details"}
         </button>
@@ -195,7 +195,7 @@ export default function TrackApplicationContent() {
         <p className="text-sm text-zinc-600 mb-8 leading-relaxed">
           Use the email and password you set when you submitted your application. If you
           haven&apos;t applied yet,{" "}
-          <Link href="/careers/opportunities" className="text-[#2F80FF] font-medium hover:underline">
+          <Link href="/careers/opportunities" className="text-[#0a5fbe] font-medium hover:underline">
             browse open roles
           </Link>
           .

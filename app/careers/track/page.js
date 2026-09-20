@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Footer from "../../components/Footer";
 import TrackApplicationContent from "../../components/careers/TrackApplicationContent";
 
 export const metadata = {
@@ -24,7 +23,7 @@ export default function TrackApplicationPage() {
           </p>
           <h1
             className="text-3xl md:text-4xl font-semibold tracking-tight leading-tight mb-4"
-            style={{ fontFamily: "var(--font-space-grotesk), system-ui, sans-serif" }}
+            style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}
           >
             Track your application
           </h1>
@@ -40,8 +39,6 @@ export default function TrackApplicationPage() {
           <TrackApplicationContent />
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

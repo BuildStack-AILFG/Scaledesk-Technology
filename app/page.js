@@ -1,67 +1,43 @@
-import Footer from "./components/Footer";
 import JsonLd from "./components/seo/JsonLd";
 import { buildPageMetadata } from "../lib/seo/metadata";
 import { pageGraph } from "../lib/seo/schema";
-import Hero from "./components/Hero";
-import TrustIndicators from "./components/TrustIndicators";
-import ProductEngineeringIntro from "./components/home/ProductEngineeringIntro";
-import InsightGrid from "./components/home/InsightGrid";
-import EngineeringCapabilities from "./components/home/EngineeringCapabilities";
-import PlatformsSection from "./components/home/PlatformsSection";
-import WhyScaleDesk from "./components/home/WhyScaleDesk";
-import EngineeringProcess from "./components/home/EngineeringProcess";
-import IndustriesSection from "./components/home/IndustriesSection";
-import FinalCTA from "./components/home/FinalCTA";
-
-const HOME_FAQS = [
-  {
-    question: "What is ScaleDesk Technology?",
-    answer:
-      "ScaleDesk Technology is a Product Engineering, AI Solutions, Enterprise Software, Software Development, IT Services, and Technology Consulting company helping startups, high-growth businesses, and enterprises build, modernize, automate, and scale digital products.",
-  },
-  {
-    question: "What products does ScaleDesk Technology offer?",
-    answer:
-      "ScaleDesk Technology offers LeadForGrow™, an AI CRM and business automation platform, and ScaleDesk HRM™, a human resource management system. Both products are engineered by ScaleDesk's Product Engineering team.",
-  },
-  {
-    question: "Who founded ScaleDesk Technology?",
-    answer:
-      "ScaleDesk Technology was co-founded by Saurabh Singh, who serves as Co-Founder and Chief Technology Officer (CTO), leading Product Engineering, AI Solutions, and enterprise software development.",
-  },
-  {
-    question: "What services does ScaleDesk Technology provide?",
-    answer:
-      "ScaleDesk Technology provides Product Engineering, Enterprise Software Development, Custom Software Development, AI Development, AI Automation, SaaS Development, MVP Development, CRM Development, HRMS Development, Cloud Native Development, DevOps, and Technology Consulting.",
-  },
-];
+import { AGENT_SUITE } from "../lib/catalog/agents";
+import { INDUSTRIES_NAV, PLATFORMS_NAV } from "../lib/nav";
+import HomeHero from "./components/home/HomeHero";
+import FeaturedCard from "./components/home/FeaturedCard";
+import ServicesSection from "./components/home/ServicesSection";
+import AgentsSection from "./components/home/AgentsSection";
+import HowWeWork from "./components/home/HowWeWork";
+import IndustryTiles from "./components/home/IndustryTiles";
+import InsightsList from "./components/home/InsightsList";
+import CareersBand from "./components/home/CareersBand";
+import HomeCta from "./components/home/HomeCta";
 
 const graph = pageGraph({
   page: {
-    title: "ScaleDesk Technology — Product Engineering Company",
+    title: "ScaleDesk Technology — Products That Grow Your Business",
     description:
-      "Product Engineering, AI Solutions, Enterprise Software Development, and IT Services by ScaleDesk Technology.",
+      "ScaleDesk builds platforms and AI agents that help businesses grow their sales, with expert engineering services when you need more.",
     path: "/",
   },
-  faqs: HOME_FAQS,
 });
 
 export const metadata = buildPageMetadata({
-  title: "Product Engineering Company — AI Solutions & Enterprise Software",
-  seoTitle:
-    "ScaleDesk Technology | Product Engineering, AI Solutions & Enterprise Software",
+  title: "Products That Grow Your Business — AI Agents & Platforms",
+  seoTitle: "ScaleDesk Technology | Products That Grow Your Business",
   metaDescription:
-    "ScaleDesk Technology is a Product Engineering company delivering AI Solutions, Enterprise Software Development, Custom Software, IT Services, and Technology Consulting. Products: LeadForGrow™ AI CRM & ScaleDesk HRM™.",
+    "ScaleDesk Technology is a product company that helps businesses grow their sales with platforms such as LeadForGrow, ForGrow AI agents, and expert engineering services.",
   path: "/",
-  primaryKeyword: "Product Engineering Company",
+  primaryKeyword: "AI agents and business growth platforms",
   secondaryKeywords: [
     "ScaleDesk Technology",
     "ScaleDesk",
-    "AI Solutions Company",
-    "Software Development Company",
-    "Enterprise Software Company",
-    "LeadForGrow CRM",
-    "ScaleDesk HRM",
+    "AI agents for business",
+    "LeadForGrow",
+    "TalkForGrow",
+    "EngageForGrow",
+    "PeopleForGrow",
+    "ForGrow AI",
   ],
 });
 
@@ -69,18 +45,38 @@ export default function Home() {
   return (
     <>
       <JsonLd data={graph} />
-      <main className="site-flow min-h-screen pb-0 flex flex-col bg-black">
-        <Hero />
-        <TrustIndicators />
-        <ProductEngineeringIntro />
-        <InsightGrid />
-        <EngineeringCapabilities />
-        <PlatformsSection />
-        <WhyScaleDesk />
-        <EngineeringProcess />
-        <IndustriesSection />
-        <FinalCTA />
-        <Footer />
+      <main>
+        <section className="sd-wave">
+          <HomeHero />
+          <div className="pb-12 lg:pb-16">
+            <FeaturedCard
+              columns={2}
+              label="Platforms"
+              link={{ label: "Explore all platforms", href: "/products" }}
+              promo={{
+                title: `Introducing ${AGENT_SUITE.name}`,
+                blurb: "AI agents that work alongside your team, from the first call to the final invoice.",
+                cta: `Explore ${AGENT_SUITE.name}`,
+                href: "/agents",
+              }}
+              items={PLATFORMS_NAV.map((p) => ({
+                name: p.displayName,
+                blurb: p.descriptor,
+                href: p.href,
+                mark: p.mark,
+                accent: p.accent,
+              }))}
+            />
+          </div>
+        </section>
+
+        <AgentsSection />
+        <HowWeWork />
+        <ServicesSection />
+        <IndustryTiles items={INDUSTRIES_NAV} />
+        <InsightsList />
+        <CareersBand />
+        <HomeCta />
       </main>
     </>
   );
