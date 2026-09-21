@@ -6,7 +6,6 @@ import PageHero from "../components/pages/PageHero";
 import HomeCta from "../components/home/HomeCta";
 import { buildPageMetadata } from "../../lib/seo/metadata";
 import { pageGraph } from "../../lib/seo/schema";
-import { SITE } from "../../lib/seo/config";
 import { AGENT_SUITE } from "../../lib/catalog/agents";
 import { PLATFORMS_NAV } from "../../lib/nav";
 
@@ -115,27 +114,6 @@ export default function AboutPage() {
                 </Reveal>
               ))}
             </div>
-          </div>
-        </section>
-
-        <section id="leadership" className="sd-surface sd-section-tight scroll-mt-32">
-          <div className="sd-container">
-            <Reveal className="grid items-center gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-              <div>
-                <p className="sd-label">Leadership</p>
-                <h2 className="sd-h2 mt-4">{SITE.founder.name}</h2>
-                <p className="mt-2 text-[18px] text-[#555]">{SITE.founder.title}</p>
-              </div>
-              <div>
-                <p className="text-[19px] leading-relaxed text-[#333]">
-                  {SITE.founder.name} co-founded ScaleDesk Technology and leads product and engineering, including the
-                  ForGrow platform family and {AGENT_SUITE.name}.
-                </p>
-                <a href={SITE.founder.linkedIn} target="_blank" rel="noopener noreferrer" className="sd-link mt-5">
-                  Connect on LinkedIn
-                </a>
-              </div>
-            </Reveal>
           </div>
         </section>
 

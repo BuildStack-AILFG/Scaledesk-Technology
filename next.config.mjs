@@ -80,11 +80,10 @@ const nextConfig = {
       // ── Founder pages folded into /about ─────────────────────────
       { source: "/about/founder", destination: "/about", permanent: true },
       { source: "/about/cto", destination: "/about", permanent: true },
-      { source: "/team/saurabh-singh", destination: "/about", permanent: true },
+      { source: "/team/:path*", destination: "/about", permanent: true },
       { source: "/founder", destination: "/about", permanent: true },
       { source: "/cto", destination: "/about", permanent: true },
-      { source: "/author/saurabh-singh", destination: "/about", permanent: true },
-      { source: "/saurabh-singh", destination: "/about", permanent: true },
+      { source: "/author/:path*", destination: "/about", permanent: true },
       { source: "/legal/linkedin", destination: "/about", permanent: true },
       // ── Aliases ─────────────────────────────────────────────────
       { source: "/service/:slug", destination: "/services/:slug", permanent: true },
