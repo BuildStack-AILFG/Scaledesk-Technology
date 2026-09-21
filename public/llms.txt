@@ -43,7 +43,12 @@
 ## Other pages
 
 - Industries: https://scaledesktechnology.com/industries
-- Insights: https://scaledesktechnology.com/insights
+- Blog: https://scaledesktechnology.com/blog
+- WhatsApp automation guides: https://scaledesktechnology.com/blog/category/whatsapp-automation
+- Instagram automation guides: https://scaledesktechnology.com/blog/category/instagram-automation
+- CRM and sales guides: https://scaledesktechnology.com/blog/category/crm
+- AI agents guides: https://scaledesktechnology.com/blog/category/ai-agents
+- RSS feed: https://scaledesktechnology.com/blog/rss.xml
 - Glossary: https://scaledesktechnology.com/glossary
 - Careers: https://scaledesktechnology.com/careers
 - Contact: https://scaledesktechnology.com/contact

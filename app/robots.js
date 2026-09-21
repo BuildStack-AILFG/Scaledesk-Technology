@@ -10,7 +10,7 @@ export default function robots() {
       },
       {
         userAgent: "GPTBot",
-        allow: ["/", "/llms.txt", "/insights/", "/services/", "/products/", "/agents/", "/about/"],
+        allow: ["/", "/llms.txt", "/blog/", "/services/", "/products/", "/agents/", "/about/"],
         disallow: ["/admin/", "/employee/", "/api/"],
       },
       {

@@ -32,6 +32,26 @@ Read `node_modules/next/dist/docs/` before changing framework-level code (see AG
 Public pages render inside the corporate shell (`app/components/shell/`). The internal `/admin` and
 `/employee` portals render without site chrome (`lib/shellRoutes.js`).
 
+## Blog
+
+Articles are Markdown files in `content/blog`. Drop in a new `.md` file and it appears on `/blog`, its category hub, the sitemap, the RSS feed (`/blog/rss.xml`) and the header search, with Article, Breadcrumb and FAQ structured data generated automatically.
+
+Front matter (all fields plain text):
+
+```
+---
+title: Up to about 68 characters
+description: One sentence, 160 characters or fewer
+category: whatsapp-automation | instagram-automation | crm | ai-agents | services | company
+date: 2026-09-21
+tags: comma, separated
+---
+```
+
+Rules the loader enforces: known category, no H1 in the body (the title is the H1), description of 160 characters or fewer. End an article with a `## Frequently asked questions` section using `###` questions and it becomes FAQ schema. Categories and their calls to action live in `lib/blog/categories.js`.
+
+Write each article for a real reader question. Do not mass-produce near-duplicate posts: search engines treat that as spam and it hurts the whole site.
+
 ## Content rules
 
 - Only verifiable facts: no invented metrics, certifications, customer logos or testimonials.

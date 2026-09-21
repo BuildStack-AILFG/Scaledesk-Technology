@@ -55,6 +55,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
+        <link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="ScaleDesk Blog" />
       </head>
       <body
         className={`min-h-full flex flex-col ${inter.className} ${inter.variable}`}

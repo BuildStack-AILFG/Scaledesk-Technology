@@ -13,7 +13,7 @@ const TABS = [
   { key: "agents", label: "AI Agents" },
   { key: "services", label: "Services" },
   { key: "industries", label: "Industries" },
-  { key: "insights", label: "Insights" },
+  { key: "insights", label: "Blog" },
   { key: "company", label: "Company" },
 ];
 
