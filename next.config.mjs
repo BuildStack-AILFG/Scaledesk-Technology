@@ -47,6 +47,7 @@ const nextConfig = {
       { source: "/scaledesk-hrm", destination: "/products/peopleforgrow", permanent: true },
       { source: "/leadforgrow", destination: "/products/leadforgrow-crm", permanent: true },
       { source: "/leadforgrow-crm", destination: "/products/leadforgrow-crm", permanent: true },
+      { source: "/talkforgrow", destination: "/products/talkforgrow", permanent: true },
       { source: "/product/:slug", destination: "/products/:slug", permanent: true },
       // ── Retired product pages ────────────────────────────────────
       { source: "/products/ai-analytics", destination: "/services/data-pipelines", permanent: true },

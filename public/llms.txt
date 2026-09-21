@@ -15,7 +15,7 @@
 ## Platforms
 
 - LeadForGrow CRM: capture, assign and follow up every lead. https://scaledesktechnology.com/products/leadforgrow-crm (app: https://leadforgrow.com)
-- TalkForGrow: run customer conversations on messaging apps. https://scaledesktechnology.com/products/talkforgrow
+- TalkForGrow: run customer conversations on messaging apps. https://scaledesktechnology.com/products/talkforgrow (app: https://talkforgrow.in)
 - EngageForGrow: social messages and comments in one inbox. https://scaledesktechnology.com/products/engageforgrow
 - PeopleForGrow: attendance, payroll and the employee lifecycle. https://scaledesktechnology.com/products/peopleforgrow
 
