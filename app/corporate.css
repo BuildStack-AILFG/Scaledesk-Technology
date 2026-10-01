@@ -1,27 +1,46 @@
 /* ═══════════════════════════════════════════════════════════════
    CORPORATE DESIGN SYSTEM  (scoped to [data-shell="corporate"])
-   Light, calm, Zoho-style corporate look: thin display type, generous
-   whitespace, a faint wave backdrop, bordered "featured" cards, uppercase
-   chevron buttons. Palette comes from the ScaleDesk logo (navy / blue / teal).
-   Legacy routes and the portals never see any of this.
+   Refined light corporate look: a confident display face (Plus Jakarta Sans)
+   over Inter body copy, one token set, one radius scale, soft navy-tinted
+   shadows. Palette comes from the ScaleDesk logo (navy / blue / teal).
+   Tailwind utilities for the same colours live in app/globals.css (@theme).
+   The admin/employee portals never see any of this.
 ═══════════════════════════════════════════════════════════════ */
 
 [data-shell="corporate"] {
+  /* Colour */
   --sd-navy: #0a2f6b;
-  --sd-navy-deep: #06214f;
+  --sd-navy-deep: #061f4a;
   --sd-blue: #0a5fbe;
   --sd-teal: #00a3b0;
   --sd-teal-dark: #007f8b;
-  --sd-ink: #111111;
-  --sd-body: #333333;
-  --sd-muted: #666666;
-  --sd-line: #dfe8ec;
-  --sd-surface: #f0f8f9;
+  --sd-ink: #0b1b33;
+  --sd-body: #3a4658;
+  --sd-muted: #64708a;
+  --sd-faint: #98a2b3;
+  --sd-line: #e3e8ef;
+  --sd-line-strong: #cfd7e2;
+  --sd-surface: #f6f8fb;
+  --sd-tint: #eef6f8;
+  --sd-brand-gradient: linear-gradient(100deg, #0a5fbe 0%, #00a3b0 100%);
+
+  /* Radius */
+  --sd-r-sm: 8px;
+  --sd-r-md: 12px;
+  --sd-r-lg: 20px;
+  --sd-r-xl: 28px;
+
+  /* Elevation (navy-tinted, never grey) */
+  --sd-shadow-sm: 0 1px 2px rgba(11, 27, 51, 0.04), 0 1px 3px rgba(11, 27, 51, 0.04);
+  --sd-shadow-md: 0 4px 10px -2px rgba(11, 27, 51, 0.06), 0 12px 28px -8px rgba(11, 27, 51, 0.12);
+  --sd-shadow-lg: 0 10px 24px -6px rgba(11, 27, 51, 0.08), 0 30px 60px -18px rgba(11, 27, 51, 0.22);
+
+  --sd-ease: cubic-bezier(0.22, 1, 0.36, 1);
 
   font-family: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   color: var(--sd-body);
   font-size: 17px;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 [data-shell="corporate"] h1,
@@ -29,207 +48,294 @@
 [data-shell="corporate"] h3,
 [data-shell="corporate"] h4,
 [data-shell="corporate"] .sd-display {
-  font-family: var(--font-inter), system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-jakarta), var(--font-inter), system-ui, sans-serif;
   color: var(--sd-ink);
 }
 
 /* ── Layout ─────────────────────────────────────────────────── */
 [data-shell="corporate"] .sd-container {
   width: 100%;
-  max-width: 1300px;
+  max-width: 1240px;
   margin-inline: auto;
   padding-inline: 24px;
 }
-/* Consistent, moderate vertical rhythm: no big empty gaps between sections. */
 [data-shell="corporate"] .sd-section {
-  padding-block: clamp(40px, 5vw, 72px);
+  padding-block: clamp(64px, 8vw, 112px);
 }
 [data-shell="corporate"] .sd-section-tight {
-  padding-block: clamp(28px, 3.5vw, 48px);
+  padding-block: clamp(40px, 5vw, 64px);
 }
 
-/* ── Type scale (Zoho: light, tight, centred headlines) ────── */
+/* ── Type scale ─────────────────────────────────────────────── */
 [data-shell="corporate"] .sd-h1 {
-  font-size: clamp(36px, 4.7vw, 66px);
-  line-height: 1.14;
-  font-weight: 400;
-  letter-spacing: -0.02em;
+  font-size: clamp(38px, 4.4vw, 58px);
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -0.035em;
 }
 [data-shell="corporate"] .sd-h2 {
-  font-size: clamp(28px, 3.1vw, 42px);
-  line-height: 1.18;
-  font-weight: 500;
-  letter-spacing: -0.015em;
+  font-size: clamp(30px, 3.4vw, 46px);
+  line-height: 1.12;
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 [data-shell="corporate"] .sd-h3 {
-  font-size: clamp(20px, 1.8vw, 26px);
-  line-height: 1.25;
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-size: clamp(19px, 1.6vw, 22px);
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.015em;
 }
 [data-shell="corporate"] .sd-lead {
-  font-size: clamp(17px, 1.5vw, 22px);
-  line-height: 1.6;
-  font-weight: 300;
+  font-size: clamp(17px, 1.35vw, 20px);
+  line-height: 1.65;
+  font-weight: 400;
   color: var(--sd-body);
 }
-[data-shell="corporate"] .sd-label {
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--sd-ink);
-}
-/* Short accent bar under a centred headline (Zoho's red dash) */
-[data-shell="corporate"] .sd-dash {
-  display: block;
-  width: 44px;
-  height: 2px;
-  margin: 26px auto 0;
-  background: var(--sd-teal);
-}
-/* Dashed underline on one key phrase in the lead (Zoho hero detail) */
-[data-shell="corporate"] .sd-dotted {
-  border-bottom: 1px dashed #8a93a0;
+/* Gradient phrase inside a headline */
+[data-shell="corporate"] .sd-gradient-text {
+  background: var(--sd-brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-/* ── Buttons (Zoho: rectangular, uppercase, thin chevron) ───── */
+/* Eyebrow above a headline: small teal caps with a leading tick. */
+[data-shell="corporate"] .sd-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sd-teal-dark);
+}
+[data-shell="corporate"] .sd-label::before {
+  content: "";
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--sd-teal);
+}
+[data-shell="corporate"] .on-dark .sd-label {
+  color: #7fe3ea;
+}
+[data-shell="corporate"] .on-dark .sd-label::before {
+  background: #7fe3ea;
+}
+/* Pill eyebrow (hero) */
+[data-shell="corporate"] .sd-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 6px;
+  border: 1px solid var(--sd-line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: var(--sd-shadow-sm);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--sd-ink);
+  text-decoration: none;
+  backdrop-filter: blur(6px);
+  transition: border-color 0.2s;
+}
+[data-shell="corporate"] a.sd-pill:hover {
+  border-color: var(--sd-line-strong);
+}
+[data-shell="corporate"] .sd-pill-tag {
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--sd-tint);
+  color: var(--sd-teal-dark);
+  font-size: 12px;
+  font-weight: 600;
+}
+/* Retired Zoho artefacts: kept as no-ops so older markup stays harmless. */
+[data-shell="corporate"] .sd-dash {
+  display: none;
+}
+[data-shell="corporate"] .sd-dotted {
+  border: 0;
+}
+
+/* ── Buttons ────────────────────────────────────────────────── */
 [data-shell="corporate"] .sd-btn {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  padding: 18px 26px 18px 32px;
-  border-radius: 999px;
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: 0.4px;
-  text-transform: uppercase;
+  justify-content: center;
+  gap: 10px;
+  min-height: 50px;
+  padding: 0 24px;
+  border-radius: var(--sd-r-md);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
   line-height: 1;
   text-decoration: none;
+  white-space: nowrap;
   cursor: pointer;
   border: 1px solid transparent;
-  transition: background-color 0.25s, color 0.25s, border-color 0.25s;
+  transition:
+    background-color 0.2s var(--sd-ease),
+    color 0.2s var(--sd-ease),
+    border-color 0.2s var(--sd-ease),
+    box-shadow 0.25s var(--sd-ease),
+    transform 0.25s var(--sd-ease);
 }
+/* Arrow that nudges on hover */
 [data-shell="corporate"] .sd-btn::after {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-top: 1.6px solid currentColor;
-  border-right: 1.6px solid currentColor;
-  transform: rotate(45deg);
-  transition: transform 0.25s;
+  content: "\2192";
+  font-size: 1.05em;
+  line-height: 1;
+  transition: transform 0.25s var(--sd-ease);
 }
 [data-shell="corporate"] .sd-btn:hover::after {
-  transform: translateX(4px) rotate(45deg);
+  transform: translateX(3px);
 }
 [data-shell="corporate"] .sd-btn-primary {
   background: var(--sd-navy);
   color: #fff;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset, 0 6px 16px -6px rgba(10, 47, 107, 0.55);
 }
 [data-shell="corporate"] .sd-btn-primary:hover {
   background: var(--sd-navy-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset, 0 10px 22px -8px rgba(10, 47, 107, 0.6);
 }
 [data-shell="corporate"] .sd-btn-outline {
   background: #fff;
-  color: var(--sd-navy);
-  border-color: var(--sd-navy);
+  color: var(--sd-ink);
+  border-color: var(--sd-line-strong);
+  box-shadow: var(--sd-shadow-sm);
 }
 [data-shell="corporate"] .sd-btn-outline:hover {
-  background: var(--sd-navy);
-  color: #fff;
+  border-color: var(--sd-navy);
+  color: var(--sd-navy);
 }
 [data-shell="corporate"] .sd-btn-light {
   background: #fff;
   color: var(--sd-navy);
 }
 [data-shell="corporate"] .sd-btn-light:hover {
-  background: #eaf6fb;
+  background: #eaf3fb;
+  transform: translateY(-1px);
 }
 [data-shell="corporate"] .sd-btn-ghost-light {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.06);
   color: #fff;
-  border-color: rgba(255, 255, 255, 0.8);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 [data-shell="corporate"] .sd-btn-ghost-light:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.6);
 }
 [data-shell="corporate"] .sd-btn-sm {
-  padding: 11px 18px 11px 20px;
+  min-height: 40px;
+  padding: 0 16px;
   font-size: 15px;
-  text-transform: none;
-  letter-spacing: 0;
+  border-radius: 10px;
 }
-[data-shell="corporate"] .sd-btn-sm::after {
+[data-shell="corporate"] .sd-btn-sm::after,
+[data-shell="corporate"] .sd-btn-plain::after {
   display: none;
 }
 
-/* Uppercase text link with chevron ("EXPLORE ALL PRODUCTS >") */
+/* Text link with arrow ("Explore all platforms →") */
 [data-shell="corporate"] .sd-link {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   color: var(--sd-blue);
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: 0.4px;
-  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 600;
   text-decoration: none;
+  transition: color 0.2s;
 }
 [data-shell="corporate"] .sd-link::after {
-  content: "";
-  width: 7px;
-  height: 7px;
-  border-top: 1.6px solid currentColor;
-  border-right: 1.6px solid currentColor;
-  transform: rotate(45deg);
-  transition: transform 0.25s;
+  content: "\2192";
+  transition: transform 0.25s var(--sd-ease);
 }
-[data-shell="corporate"] .sd-link:hover::after {
-  transform: translateX(4px) rotate(45deg);
+[data-shell="corporate"] .sd-link:hover {
+  color: var(--sd-navy);
+}
+[data-shell="corporate"] .sd-link:hover::after,
+[data-shell="corporate"] .group:hover .sd-link::after {
+  transform: translateX(4px);
 }
 [data-shell="corporate"] .on-dark .sd-link {
   color: #fff;
 }
 
 /* ── Backdrops ──────────────────────────────────────────────── */
-/* Faint flowing lines behind the hero (Zoho's pale wave pattern). */
+/* Hero backdrop: faint masked grid + soft brand glows. (Class name kept from
+   the earlier wave design so existing markup picks it up.) */
 [data-shell="corporate"] .sd-wave {
-  background-color: #f3fafb;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='420' viewBox='0 0 900 420' fill='none' stroke='%23c8e4e8' stroke-width='1'%3E%3Cpath d='M-40 300C120 180 260 420 430 290S720 140 940 260'/%3E%3Cpath d='M-40 270C120 150 260 390 430 260S720 110 940 230'/%3E%3Cpath d='M-40 240C120 120 260 360 430 230S720 80 940 200'/%3E%3Cpath d='M-40 210C120 90 260 330 430 200S720 50 940 170'/%3E%3Cpath d='M-40 180C120 60 260 300 430 170S720 20 940 140'/%3E%3Cpath d='M-40 150C120 30 260 270 430 140S720 -10 940 110'/%3E%3Cpath d='M-40 330C120 210 260 450 430 320S720 170 940 290'/%3E%3Cpath d='M-40 360C120 240 260 480 430 350S720 200 940 320'/%3E%3C/svg%3E");
-  background-repeat: repeat-x;
-  background-position: center 40%;
-  background-size: 900px 420px;
   position: relative;
+  isolation: isolate;
+  background: linear-gradient(180deg, #f5f8fc 0%, #ffffff 100%);
+  overflow: hidden;
 }
 [data-shell="corporate"] .sd-wave::before {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(55% 60% at 50% -10%, rgba(0, 163, 176, 0.22) 0%, rgba(0, 163, 176, 0) 70%),
-    radial-gradient(40% 50% at 100% 60%, rgba(10, 95, 190, 0.10) 0%, rgba(10, 95, 190, 0) 70%),
-    radial-gradient(40% 50% at 0% 70%, rgba(0, 163, 176, 0.12) 0%, rgba(0, 163, 176, 0) 70%);
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(10, 47, 107, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 47, 107, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-position: center top;
+  -webkit-mask-image: radial-gradient(70% 60% at 50% 0%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(70% 60% at 50% 0%, #000 0%, transparent 75%);
   pointer-events: none;
 }
-[data-shell="corporate"] .sd-wave > * {
-  position: relative;
+[data-shell="corporate"] .sd-wave::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(40% 45% at 85% 10%, rgba(0, 163, 176, 0.16) 0%, transparent 70%),
+    radial-gradient(45% 50% at 10% 0%, rgba(10, 95, 190, 0.12) 0%, transparent 70%);
+  pointer-events: none;
 }
 [data-shell="corporate"] .sd-wave-fade {
-  background-image: linear-gradient(180deg, rgba(249, 250, 253, 0) 60%, #fff 100%);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 60%, #fff 100%);
 }
 
 /* ── Surfaces ───────────────────────────────────────────────── */
 [data-shell="corporate"] .sd-card {
   background: #fff;
   border: 1px solid var(--sd-line);
-  border-radius: 24px;
-  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.03);
+  border-radius: var(--sd-r-lg);
+  box-shadow: var(--sd-shadow-sm);
+}
+/* Interactive card: lifts on hover. Layout (block/flex) is left to utilities. */
+[data-shell="corporate"] .sd-card-link {
+  background: #fff;
+  border: 1px solid var(--sd-line);
+  border-radius: var(--sd-r-lg);
+  box-shadow: var(--sd-shadow-sm);
+  text-decoration: none;
+  transition:
+    transform 0.3s var(--sd-ease),
+    box-shadow 0.3s var(--sd-ease),
+    border-color 0.3s var(--sd-ease);
+}
+[data-shell="corporate"] .sd-card-link:hover {
+  transform: translateY(-3px);
+  border-color: var(--sd-line-strong);
+  box-shadow: var(--sd-shadow-md);
 }
 [data-shell="corporate"] .sd-gradient-card {
-  background: linear-gradient(160deg, #0a2f6b 0%, #0a5fbe 58%, #00a3b0 135%);
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(70% 60% at 100% 0%, rgba(0, 163, 176, 0.45) 0%, transparent 70%),
+    linear-gradient(155deg, #0a2f6b 0%, #0a4f9e 100%);
   color: #fff;
-  border-radius: 18px;
+  border-radius: var(--sd-r-lg);
 }
 [data-shell="corporate"] .sd-gradient-card h2,
 [data-shell="corporate"] .sd-gradient-card h3 {
@@ -239,11 +345,28 @@
   background: var(--sd-surface);
 }
 [data-shell="corporate"] .sd-navy-band {
-  background: linear-gradient(135deg, #06214f 0%, #0a3a78 60%, #07566b 120%);
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(50% 80% at 100% 0%, rgba(0, 163, 176, 0.35) 0%, transparent 70%),
+    radial-gradient(40% 70% at 0% 100%, rgba(10, 95, 190, 0.45) 0%, transparent 70%),
+    linear-gradient(135deg, #061f4a 0%, #0a2f6b 100%);
   color: #fff;
-  margin-inline: clamp(12px, 2vw, 28px);
-  border-radius: 32px;
+  border-radius: var(--sd-r-xl);
   overflow: hidden;
+}
+/* Faint grid over dark bands */
+[data-shell="corporate"] .sd-navy-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(80% 80% at 50% 50%, #000 0%, transparent 80%);
+  mask-image: radial-gradient(80% 80% at 50% 50%, #000 0%, transparent 80%);
 }
 [data-shell="corporate"] .on-dark,
 [data-shell="corporate"] .on-dark h1,
@@ -253,22 +376,54 @@
 }
 [data-shell="corporate"] .on-dark .sd-lead,
 [data-shell="corporate"] .on-dark p {
-  color: rgba(255, 255, 255, 0.86);
+  color: rgba(255, 255, 255, 0.78);
 }
 
 /* Product / service tile in the featured grid */
 [data-shell="corporate"] .sd-tile {
   display: block;
-  padding: 6px 4px;
-  border-radius: 6px;
+  padding: 14px;
+  border-radius: var(--sd-r-md);
   text-decoration: none;
   transition: background-color 0.2s;
 }
 [data-shell="corporate"] .sd-tile:hover {
-  background: #f5f7fb;
+  background: var(--sd-surface);
 }
 [data-shell="corporate"] .sd-tile:hover .sd-tile-name {
   color: var(--sd-blue);
+}
+
+/* Small rounded chip (channels, tags) */
+[data-shell="corporate"] .sd-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: 1px solid var(--sd-line);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--sd-body);
+}
+
+/* Hero product visual: gentle float on the stacked UI cards. */
+@keyframes sd-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+[data-shell="corporate"] .sd-float {
+  animation: sd-float 7s ease-in-out infinite;
+}
+[data-shell="corporate"] .sd-float-slow {
+  animation: sd-float 9s ease-in-out infinite 1.2s;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-shell="corporate"] .sd-float,
+  [data-shell="corporate"] .sd-float-slow {
+    animation: none;
+  }
 }
 
 /* ── Scroll reveal (Zoho .anim-ele) ─────────────────────────── */
@@ -314,7 +469,21 @@
   display: none;
 }
 [data-shell="corporate"] details.sd-faq[open] .sd-faq-chev {
-  transform: rotate(180deg);
+  transform: rotate(45deg);
+  color: var(--sd-navy);
+}
+[data-shell="corporate"] details.sd-faq[open] > :not(summary) {
+  animation: sd-faq-open 0.35s var(--sd-ease);
+}
+@keyframes sd-faq-open {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ── Mega-menu fade ─────────────────────────────────────────── */
@@ -360,15 +529,15 @@
   margin-top: 2.2em;
   font-size: clamp(26px, 2.4vw, 34px);
   line-height: 1.22;
-  font-weight: 500;
-  letter-spacing: -0.015em;
+  font-weight: 700;
+  letter-spacing: -0.025em;
   scroll-margin-top: 110px;
 }
 [data-shell="corporate"] .sd-prose h3 {
   margin-top: 1.8em;
   font-size: clamp(21px, 1.8vw, 25px);
   line-height: 1.3;
-  font-weight: 500;
+  font-weight: 600;
   scroll-margin-top: 110px;
 }
 [data-shell="corporate"] .sd-prose p {
@@ -440,4 +609,52 @@
   border: 0;
   border-top: 1px solid var(--sd-line);
   margin-block: 2.2em;
+}
+
+/* Page-top hero that slides under the (transparent) sticky header so the
+   backdrop starts at the very top of the viewport. */
+[data-shell="corporate"] .sd-hero-bleed {
+  margin-top: -68px;
+  padding-top: 68px;
+}
+
+/* Above-the-fold entrance: pure CSS, runs on first paint without waiting for
+   hydration (unlike .sd-reveal, which is for content below the fold). */
+@keyframes sd-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+[data-shell="corporate"] .sd-enter {
+  animation: sd-enter 0.8s var(--sd-ease) both;
+  animation-delay: var(--d, 0ms);
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-shell="corporate"] .sd-enter {
+    animation: none;
+  }
+}
+
+/* Brand photo treatment: stock photos share one calm navy/teal mood.
+   Applied via tone() in lib/images.js; real photos (`real: true`) opt out. */
+[data-shell="corporate"] .sd-photo {
+  isolation: isolate;
+}
+[data-shell="corporate"] .sd-photo img {
+  filter: saturate(0.8) contrast(1.04) brightness(1.03);
+}
+[data-shell="corporate"] .sd-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background: linear-gradient(155deg, rgba(10, 47, 107, 0.22) 0%, rgba(10, 95, 190, 0.06) 55%, rgba(0, 163, 176, 0.16) 100%);
+  mix-blend-mode: multiply;
+  pointer-events: none;
 }

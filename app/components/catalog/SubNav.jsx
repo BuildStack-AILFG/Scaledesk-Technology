@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 /**
- * Sticky sub-navigation for product pages (Zoho pattern): anchor links that
- * highlight the section in view, plus a persistent call to action.
+ * Sticky sub-navigation for product pages: anchor links that highlight the
+ * section in view, plus a persistent call to action.
  */
 export default function SubNav({ items, ctaLabel, ctaHref }) {
   const [active, setActive] = useState(items[0]?.id);
@@ -25,15 +25,16 @@ export default function SubNav({ items, ctaLabel, ctaHref }) {
   }, [items]);
 
   return (
-    <div className="sticky top-[72px] z-30 border-b border-[#e6e8ee] bg-white/95 backdrop-blur">
-      <div className="sd-container flex items-center justify-between gap-6">
-        <nav className="-mb-px flex gap-7 overflow-x-auto" aria-label="On this page">
+    <div className="sticky top-[68px] z-30 border-y border-sd-line bg-white/85 backdrop-blur-xl">
+      <div className="sd-container flex h-[60px] items-center justify-between gap-6">
+        <nav className="flex gap-1 overflow-x-auto [scrollbar-width:none]" aria-label="On this page">
           {items.map((i) => (
             <a
               key={i.id}
               href={`#${i.id}`}
-              className={`whitespace-nowrap border-b-2 py-4 text-[16px] transition-colors ${
-                active === i.id ? "border-[#0a5fbe] text-[#0a5fbe]" : "border-transparent text-[#333] hover:text-[#0a5fbe]"
+              aria-current={active === i.id ? "location" : undefined}
+              className={`whitespace-nowrap rounded-full px-4 py-2 text-[14.5px] font-medium transition-colors ${
+                active === i.id ? "bg-sd-navy text-white" : "text-sd-body hover:bg-sd-surface hover:text-sd-navy"
               }`}
             >
               {i.label}

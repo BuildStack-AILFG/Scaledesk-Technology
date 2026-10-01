@@ -3,8 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const BLUE = "#0a5fbe";
-
 const INITIAL_FORM = {
   fullName: "",
   email: "",
@@ -21,11 +19,11 @@ const INITIAL_FORM = {
 
 function FormSection({ title, description, children }) {
   return (
-    <section className="border border-zinc-200 bg-white p-6 md:p-8">
+    <section className="sd-card p-6 md:p-8">
       <div className="mb-6">
-        <h2 className="text-lg font-semibold text-zinc-900">{title}</h2>
+        <h2 className="font-display text-[19px] font-bold tracking-tight text-sd-ink">{title}</h2>
         {description ? (
-          <p className="mt-1 text-sm text-zinc-500 leading-relaxed">{description}</p>
+          <p className="mt-1 text-sm text-sd-muted leading-relaxed">{description}</p>
         ) : null}
       </div>
       {children}
@@ -36,18 +34,18 @@ function FormSection({ title, description, children }) {
 function Field({ label, required, children, hint }) {
   return (
     <label className="block">
-      <span className="mb-2 block text-sm font-medium text-zinc-700">
+      <span className="mb-2 block text-sm font-medium text-sd-body">
         {label}
-        {required ? <span className="text-[#0a5fbe]"> *</span> : null}
+        {required ? <span className="text-sd-blue"> *</span> : null}
       </span>
       {children}
-      {hint ? <span className="mt-1.5 block text-xs text-zinc-400">{hint}</span> : null}
+      {hint ? <span className="mt-1.5 block text-xs text-sd-muted">{hint}</span> : null}
     </label>
   );
 }
 
 const inputClass =
-  "w-full border border-zinc-200 bg-white px-4 py-3 text-zinc-900 placeholder-zinc-400 focus:border-[#0a5fbe] focus:outline-none";
+  "w-full rounded-xl border border-sd-line-strong bg-white px-4 py-3 text-[16px] text-sd-ink placeholder-sd-muted shadow-[0_1px_2px_rgba(11,27,51,0.04)] transition-[border-color,box-shadow] focus:border-sd-blue focus:shadow-[0_0_0_4px_rgba(10,95,190,0.12)] focus:outline-none";
 
 export default function JobApplicationForm({ job }) {
   const [formData, setFormData] = useState(INITIAL_FORM);
@@ -107,52 +105,50 @@ export default function JobApplicationForm({ job }) {
 
   if (submitted) {
     return (
-      <div className="border border-zinc-200 bg-white p-10 md:p-14 text-center">
+      <div className="sd-card p-10 md:p-14 text-center">
         <div
-          className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full text-white text-2xl"
-          style={{ backgroundColor: BLUE }}
+          className="sd-btn sd-btn-primary sd-btn-plain disabled:opacity-60 disabled:cursor-not-allowed"
         >
           ✓
         </div>
-        <h2 className="text-2xl font-semibold text-zinc-900 mb-3">Application submitted</h2>
-        <p className="text-zinc-600 max-w-md mx-auto leading-relaxed mb-2">
+        <h2 className="text-2xl font-semibold text-sd-ink mb-3">Application submitted</h2>
+        <p className="text-sd-body max-w-md mx-auto leading-relaxed mb-2">
           Thank you for applying for <strong>{job.title}</strong>. Our team will review your
           application and get back to you if your profile is a match.
         </p>
         {applicationId ? (
-          <p className="text-xs text-zinc-400 mb-4">Reference: {applicationId}</p>
+          <p className="text-xs text-sd-muted mb-4">Reference: {applicationId}</p>
         ) : (
           <div className="mb-4" />
         )}
-        <div className="max-w-md mx-auto mb-8 border border-zinc-200 bg-zinc-50 p-5 text-left text-sm text-zinc-600 leading-relaxed">
-          <p className="font-semibold text-zinc-900 mb-2">Your tracking account is ready</p>
+        <div className="max-w-md mx-auto mb-8 rounded-xl border border-sd-line bg-sd-surface p-5 text-left text-sm text-sd-body leading-relaxed">
+          <p className="font-semibold text-sd-ink mb-2">Your tracking account is ready</p>
           <p>
             Sign in anytime at{" "}
-            <Link href="/careers/track" className="text-[#0a5fbe] font-medium hover:underline">
+            <Link href="/careers/track" className="text-sd-blue font-medium hover:underline">
               Track Application
             </Link>{" "}
             using:
           </p>
-          <ul className="mt-3 space-y-1 text-zinc-700">
+          <ul className="mt-3 space-y-1 text-sd-body">
             <li>
-              <span className="text-zinc-500">Email:</span> {accountEmail}
+              <span className="text-sd-muted">Email:</span> {accountEmail}
             </li>
             <li>
-              <span className="text-zinc-500">Password:</span> the password you just set
+              <span className="text-sd-muted">Password:</span> the password you just set
             </li>
           </ul>
         </div>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
             href="/careers/track"
-            className="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold text-white"
-            style={{ backgroundColor: BLUE }}
+            className="sd-btn sd-btn-primary sd-btn-plain disabled:opacity-60 disabled:cursor-not-allowed"
           >
             Track my application
           </Link>
           <Link
             href="/careers/opportunities"
-            className="inline-flex items-center justify-center border border-zinc-200 px-6 py-3 text-sm font-semibold text-zinc-700 hover:border-zinc-400 transition-colors"
+            className="inline-flex items-center justify-center rounded-xl border border-sd-line bg-white px-6 py-3 text-sm font-semibold text-sd-body hover:border-sd-navy hover:text-sd-navy transition-colors"
           >
             View other roles
           </Link>
@@ -278,12 +274,12 @@ export default function JobApplicationForm({ job }) {
             name="resume"
             accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
             onChange={handleResumeChange}
-            className="w-full border border-dashed border-zinc-300 bg-zinc-50 px-4 py-8 text-sm text-zinc-600 file:mr-4 file:border-0 file:bg-[#0a5fbe] file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:opacity-90"
+            className="w-full rounded-xl border border-dashed border-sd-line-strong bg-sd-surface px-4 py-8 text-sm text-sd-body file:mr-4 file:border-0 file:bg-sd-navy file:rounded-lg file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:opacity-90"
           />
         </Field>
         {resume ? (
-          <p className="mt-3 text-sm text-zinc-500">
-            Selected: <span className="font-medium text-zinc-700">{resume.name}</span>
+          <p className="mt-3 text-sm text-sd-muted">
+            Selected: <span className="font-medium text-sd-body">{resume.name}</span>
           </p>
         ) : null}
       </FormSection>
@@ -335,26 +331,25 @@ export default function JobApplicationForm({ job }) {
             className={`${inputClass} resize-y min-h-[160px]`}
           />
         </Field>
-        <p className="mt-2 text-xs text-zinc-400 text-right">
+        <p className="mt-2 text-xs text-sd-muted text-right">
           {formData.whyJoinUs.length} characters
         </p>
       </FormSection>
 
       {error ? (
-        <div className="border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
           {error}
         </div>
       ) : null}
 
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border border-zinc-200 bg-zinc-50 p-6">
-        <p className="text-sm text-zinc-500">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 rounded-[20px] border border-sd-line bg-sd-surface p-6">
+        <p className="text-sm text-sd-muted">
           By submitting, you confirm the information provided is accurate.
         </p>
         <button
           type="submit"
           disabled={isSubmitting}
-          className="inline-flex items-center justify-center px-8 py-3.5 text-sm font-semibold text-white disabled:opacity-60 disabled:cursor-not-allowed"
-          style={{ backgroundColor: BLUE }}
+          className="sd-btn sd-btn-primary sd-btn-plain disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {isSubmitting ? "Submitting..." : "Submit application"}
         </button>

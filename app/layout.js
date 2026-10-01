@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import "./corporate.css";
@@ -11,10 +11,18 @@ import { getNavData } from "../lib/nav";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-inter",
   display: "swap",
   preload: true,
+});
+
+// Display face for headings; Inter stays the body face.
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-jakarta",
+  display: "swap",
 });
 
 export const metadata = buildPageMetadata({
@@ -50,7 +58,7 @@ export default function RootLayout({ children }) {
   const nav = getNavData();
 
   return (
-    <html lang="en" className="h-full antialiased">
+    <html lang="en" className={`h-full antialiased ${inter.variable} ${jakarta.variable}`}>
       <head>
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
@@ -58,7 +66,7 @@ export default function RootLayout({ children }) {
         <link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="ScaleDesk Blog" />
       </head>
       <body
-        className={`min-h-full flex flex-col ${inter.className} ${inter.variable}`}
+        className={`min-h-full flex flex-col ${inter.className}`}
       >
         <JsonLd data={siteGraph()} />
         <SiteShell nav={nav}>{children}</SiteShell>
@@ -66,7 +74,7 @@ export default function RootLayout({ children }) {
             (invalid markup); same script, now loaded via next/script. */}
         <Script
           src="https://wap-production-ce44.up.railway.app/api/public/widget/dI0a6XETdWzXDuYq.js"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
       </body>
     </html>

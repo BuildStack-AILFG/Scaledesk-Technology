@@ -69,7 +69,7 @@ export default async function GlossaryTermPage({ params }) {
                       <li key={t.slug}>
                         <Link
                           href={`/glossary/${t.slug}`}
-                          className="inline-block rounded-full border border-[#d5dbe0] bg-white px-5 py-2 text-[16px] text-[#333] transition-colors hover:border-[#0a5fbe] hover:text-[#0a5fbe]"
+                          className="inline-flex rounded-full border border-sd-line bg-white px-4 py-2 text-[15px] font-medium text-sd-body transition-colors hover:border-sd-navy hover:text-sd-navy"
                         >
                           {t.term}
                         </Link>

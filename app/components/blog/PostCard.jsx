@@ -9,21 +9,27 @@ export function formatDate(iso) {
 /** Text-forward article card: category, title, summary, date and reading time. */
 export default function PostCard({ post }) {
   const cat = getCategory(post.category);
+  const accent = cat?.accent ?? "#0a5fbe";
   return (
-    <Link
-      href={`/blog/${post.slug}`}
-      className="group flex h-full flex-col rounded-3xl border border-[#dfe8ec] bg-white p-7 transition-shadow hover:shadow-[0_14px_34px_-18px_rgba(6,33,79,0.35)]"
-      style={{ borderTop: `4px solid ${cat?.accent ?? "#0a5fbe"}` }}
-    >
-      <span className="text-[13px] font-medium uppercase tracking-[0.06em]" style={{ color: cat?.accent }}>
+    <Link href={`/blog/${post.slug}`} className="sd-card-link group flex h-full flex-col p-7">
+      <span
+        className="inline-flex items-center gap-2 self-start rounded-full px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.08em]"
+        style={{ background: `${accent}14`, color: accent }}
+      >
+        <span className="h-1.5 w-1.5 rounded-full" style={{ background: accent }} aria-hidden="true" />
         {cat?.name}
       </span>
-      <h3 className="mt-3 text-[22px] font-normal leading-snug text-[#111] transition-colors group-hover:text-[#0a5fbe]">
+      <h3 className="mt-5 font-display text-[19px] font-semibold leading-snug tracking-tight text-sd-ink transition-colors group-hover:text-sd-blue">
         {post.title}
       </h3>
-      <p className="mt-3 flex-1 text-[16px] leading-snug text-[#555]">{snippet(post.description, 130)}</p>
-      <p className="mt-5 text-[14px] text-[#777]">
-        {formatDate(post.date)} &middot; {post.readTime}
+      <p className="mt-3 flex-1 text-[15px] leading-relaxed text-sd-muted">{snippet(post.description, 130)}</p>
+      <p className="mt-6 flex items-center justify-between border-t border-sd-line pt-4 text-[13.5px] text-sd-muted">
+        <span>
+          {formatDate(post.date)} &middot; {post.readTime}
+        </span>
+        <span aria-hidden="true" className="text-sd-faint transition-all group-hover:translate-x-1 group-hover:text-sd-blue">
+          &rarr;
+        </span>
       </p>
     </Link>
   );

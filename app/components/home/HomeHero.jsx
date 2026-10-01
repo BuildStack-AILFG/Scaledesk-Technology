@@ -1,32 +1,55 @@
 import Link from "next/link";
-import Reveal from "../shell/Reveal";
+import HeroVisual from "./HeroVisual";
 import { CTA } from "../../../lib/nav";
+import { AGENT_SUITE } from "../../../lib/catalog/agents";
+import { CHANNELS } from "../../../lib/proof";
 
-/** Zoho-style hero: centred light-weight headline, short accent dash, two-line lead, one solid button. */
+/** Two-column hero: message and actions on the left, product composition on the right. */
 export default function HomeHero() {
   return (
-    <div className="mx-auto max-w-[1100px] px-6 pb-12 pt-12 text-center lg:pb-14 lg:pt-16">
-      <Reveal>
-        <h1 className="sd-h1">
-          Products that grow your business,
-          <br className="hidden sm:block" /> powered by AI and automation
-        </h1>
-        <span className="sd-dash" aria-hidden="true" />
-      </Reveal>
-      <Reveal delay={100}>
-        <p className="sd-lead mx-auto mt-8 max-w-[880px]">
-          ScaleDesk builds the platforms and AI agents that help businesses of every size capture leads, talk to
-          customers and <span className="sd-dotted">sell more</span>, with expert services whenever you need more.
-        </p>
-      </Reveal>
-      <Reveal delay={200} className="mt-9 flex flex-wrap items-center justify-center gap-x-8 gap-y-5">
-        <Link href="/products" className="sd-btn sd-btn-primary">
-          Explore our platforms
-        </Link>
-        <Link href={CTA.primary.href} className="sd-link">
-          Talk to our experts
-        </Link>
-      </Reveal>
+    <div className="sd-container grid items-center gap-12 pb-16 pt-14 lg:grid-cols-[1.05fr_1fr] lg:gap-10 lg:pb-24 lg:pt-20">
+      <div className="text-center lg:text-left">
+        <div className="sd-enter">
+          <Link href="/agents" className="sd-pill">
+            <span className="sd-pill-tag">New</span>
+            Meet {AGENT_SUITE.name}, AI agents for your team
+            <span aria-hidden="true" className="text-sd-faint">
+              &rarr;
+            </span>
+          </Link>
+        </div>
+        <div className="sd-enter" style={{ "--d": "80ms" }}>
+          <h1 className="sd-h1 mt-7">
+            Products that grow your business, <span className="sd-gradient-text">powered by AI</span>
+          </h1>
+        </div>
+        <div className="sd-enter" style={{ "--d": "160ms" }}>
+          <p className="sd-lead mx-auto mt-6 max-w-[560px] lg:mx-0">
+            ScaleDesk builds the platforms and AI agents that help businesses capture leads, talk to customers and sell
+            more, with expert engineers whenever you need more.
+          </p>
+        </div>
+        <div className="sd-enter mt-9 flex flex-wrap items-center justify-center gap-3 lg:justify-start" style={{ "--d": "240ms" }}>
+          <Link href="/products" className="sd-btn sd-btn-primary">
+            Explore our platforms
+          </Link>
+          <Link href={CTA.primary.href} className="sd-btn sd-btn-outline sd-btn-plain">
+            {CTA.primary.label}
+          </Link>
+        </div>
+        <div className="sd-enter mt-9 flex flex-wrap items-center justify-center gap-2 lg:justify-start" style={{ "--d": "320ms" }}>
+          <span className="mr-1 text-[14px] text-sd-muted">Works across</span>
+          {CHANNELS.map((c) => (
+            <span key={c} className="sd-chip">
+              {c}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className="sd-enter" style={{ "--d": "200ms" }}>
+        <HeroVisual />
+      </div>
     </div>
   );
 }

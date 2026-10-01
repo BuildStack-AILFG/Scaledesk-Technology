@@ -24,19 +24,19 @@ function ItemRow({ item }) {
     <SmartLink
       href={item.href}
       external={item.external}
-      className="group flex items-start gap-4 rounded-md p-3 transition-colors hover:bg-[#f8f9fb]"
+      className="group flex items-start gap-4 rounded-xl p-3 transition-colors hover:bg-sd-surface"
     >
       {item.mark ? (
         <span className="mt-0.5 shrink-0">
-          <Mark name={item.mark} size={36} color={item.accent} />
+          <Mark name={item.mark} size={34} color={item.accent} />
         </span>
       ) : null}
       <span className="min-w-0">
-        <span className="flex items-center gap-1 text-[17px] text-[#111] group-hover:text-[#0a5fbe]">
+        <span className="flex items-center gap-1 text-[16px] font-semibold text-sd-ink group-hover:text-sd-blue">
           {item.name}
-          {item.external && <ArrowUpRight size={13} className="text-[#8a93a0]" />}
+          {item.external && <ArrowUpRight size={13} className="text-sd-faint" />}
         </span>
-        {item.blurb && <span className="mt-0.5 block text-[14px] leading-snug text-[#555]">{item.blurb}</span>}
+        {item.blurb && <span className="mt-0.5 block text-[14px] leading-snug text-sd-muted">{item.blurb}</span>}
       </span>
     </SmartLink>
   );
@@ -55,11 +55,11 @@ function Aside({ menu }) {
           <span className="rounded-sm bg-white/20 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider">
             {menu.launch.tag}
           </span>
-          <span className="mt-3 block font-[family-name:var(--font-display)] text-[21px] leading-snug">
+          <span className="mt-3 block font-display text-[20px] font-semibold leading-snug tracking-tight">
             {menu.launch.title}
           </span>
           <span className="mt-1.5 block text-[14px] leading-snug text-white/85">{menu.launch.blurb}</span>
-          <span className="mt-4 inline-block border-b border-white/70 pb-0.5 text-[13px] font-medium uppercase tracking-wide">
+          <span className="mt-4 inline-flex items-center gap-1.5 text-[14px] font-semibold">
             {menu.launch.cta}
           </span>
         </SmartLink>
@@ -67,13 +67,13 @@ function Aside({ menu }) {
       {menu.banner && (
         <Link
           href={menu.banner.href}
-          className="block rounded-lg border border-[#e6e8ee] bg-[#f8f9fb] p-6 transition-colors hover:bg-[#f2f5fa]"
+          className="block rounded-[20px] border border-sd-line bg-sd-surface p-6 transition-colors hover:border-sd-line-strong"
         >
-          <span className="block font-[family-name:var(--font-display)] text-[19px] leading-snug text-[#111]">
+          <span className="block font-display text-[18px] font-semibold leading-snug tracking-tight text-sd-ink">
             {menu.banner.title}
           </span>
-          <span className="mt-1.5 block text-[14px] leading-snug text-[#555]">{menu.banner.blurb}</span>
-          <span className="sd-link mt-4 !text-[13px]">{menu.banner.cta}</span>
+          <span className="mt-1.5 block text-[14px] leading-snug text-sd-muted">{menu.banner.blurb}</span>
+          <span className="sd-link mt-4 !text-[14px]">{menu.banner.cta}</span>
         </Link>
       )}
     </div>
@@ -99,7 +99,7 @@ function Panel({ menu }) {
       }`}
     >
       {hasRail && (
-        <ul className="border-r border-[#e6e8ee] pr-4">
+        <ul className="border-r border-sd-line pr-4">
           {menu.rail.map((c) => (
             <li key={c.id}>
               <button
@@ -107,14 +107,14 @@ function Panel({ menu }) {
                 onMouseEnter={() => setCat(c.id)}
                 onFocus={() => setCat(c.id)}
                 onClick={() => setCat(c.id)}
-                className={`flex w-full items-center justify-between rounded-md px-3.5 py-3 text-left text-[16px] transition-colors ${
+                className={`flex w-full items-center justify-between rounded-xl px-3.5 py-3 text-left text-[15px] transition-colors ${
                   active?.id === c.id
-                    ? "bg-[#f8f9fb] font-medium text-[#0a5fbe] shadow-[inset_3px_0_0_#0a5fbe]"
-                    : "text-[#333] hover:bg-[#f8f9fb]"
+                    ? "bg-sd-surface font-semibold text-sd-navy"
+                    : "text-sd-body hover:bg-sd-surface"
                 }`}
               >
                 {c.label}
-                <ChevronRight size={15} className="text-[#a3aab5]" />
+                <ChevronRight size={15} className="text-sd-faint" />
               </button>
             </li>
           ))}
@@ -128,7 +128,7 @@ function Panel({ menu }) {
           ))}
         </div>
         {menu.cta && (
-          <div className="mt-4 border-t border-[#e6e8ee] px-3 pt-4">
+          <div className="mt-4 border-t border-sd-line px-3 pt-4">
             <Link href={menu.cta.href} className="sd-link">
               {menu.cta.label}
             </Link>
@@ -157,27 +157,27 @@ function SearchPanel({ index, onClose }) {
   }, [q, index]);
 
   return (
-    <div className="sd-mega absolute inset-x-0 top-full border-b border-[#e6e8ee] bg-white shadow-[0_18px_40px_rgba(15,27,23,0.14)]">
+    <div className="sd-mega absolute inset-x-0 top-full border-b border-sd-line bg-white shadow-[0_24px_48px_-12px_rgba(11,27,51,0.18)]">
       <div className="mx-auto max-w-[900px] px-6 py-8">
-        <div className="flex items-center gap-3 border-b-2 border-[#0a2f6b] pb-3">
-          <Search size={22} className="text-[#0a2f6b]" />
+        <div className="flex items-center gap-3 rounded-xl border border-sd-line-strong bg-sd-surface px-4 py-3 focus-within:border-sd-blue focus-within:bg-white">
+          <Search size={20} className="text-sd-muted" />
           <input
             ref={inputRef}
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search platforms, AI agents and services"
-            className="w-full bg-transparent text-[20px] text-[#111] placeholder-[#8a93a0] outline-none"
+            className="w-full bg-transparent text-[18px] text-sd-ink placeholder-sd-muted outline-none"
             aria-label="Search the site"
           />
-          <button type="button" onClick={onClose} aria-label="Close search" className="text-[#555]">
-            <X size={22} />
+          <button type="button" onClick={onClose} aria-label="Close search" className="text-sd-muted hover:text-sd-ink">
+            <X size={20} />
           </button>
         </div>
-        <p className="mb-2 mt-5 text-[13px] font-medium uppercase tracking-wide text-[#666]">
+        <p className="mb-2 mt-6 px-3 text-[12px] font-semibold uppercase tracking-[0.12em] text-sd-muted">
           {q.trim() ? "Results" : "Popular"}
         </p>
         {results.length === 0 ? (
-          <p className="py-4 text-[16px] text-[#555]">No matches. Try &ldquo;CRM&rdquo;, &ldquo;voice&rdquo; or &ldquo;automation&rdquo;.</p>
+          <p className="px-3 py-4 text-[16px] text-sd-muted">No matches. Try &ldquo;CRM&rdquo;, &ldquo;voice&rdquo; or &ldquo;automation&rdquo;.</p>
         ) : (
           <ul>
             {results.map((r) => (
@@ -186,10 +186,10 @@ function SearchPanel({ index, onClose }) {
                   href={r.href}
                   external={r.external}
                   onClick={onClose}
-                  className="flex items-center justify-between rounded-md px-3 py-2.5 hover:bg-[#f8f9fb]"
+                  className="flex items-center justify-between rounded-xl px-3 py-2.5 hover:bg-sd-surface"
                 >
-                  <span className="text-[17px] text-[#111]">{r.label}</span>
-                  <span className="text-[13px] text-[#666]">{r.group}</span>
+                  <span className="text-[16px] font-medium text-sd-ink">{r.label}</span>
+                  <span className="rounded-full bg-sd-surface px-2.5 py-0.5 text-[12px] text-sd-muted">{r.group}</span>
                 </SmartLink>
               </li>
             ))}
@@ -202,21 +202,35 @@ function SearchPanel({ index, onClose }) {
 
 /* ── Mobile drawer (L1 → L2 → L3 with Back) ────────────────────────────── */
 
-function MobileDrawer({ nav, onNavigate }) {
+const FOCUSABLE = 'a[href], button:not([disabled]), input, [tabindex]:not([tabindex="-1"])';
+
+function MobileDrawer({ nav, onNavigate, drawerRef }) {
   const [stack, setStack] = useState([]);
+
+  // Move focus into the drawer when it opens and whenever the level changes.
+  useEffect(() => {
+    drawerRef.current?.querySelector(FOCUSABLE)?.focus();
+  }, [stack, drawerRef]);
   const [tabKey, catId] = stack;
   const menu = tabKey ? nav.menus[tabKey] : null;
   const single = menu && menu.rail.length === 1;
   const cat = menu && (single ? menu.rail[0] : menu.rail.find((c) => c.id === catId));
-  const row = "flex w-full items-center justify-between border-b border-[#e6e8ee] px-1 py-4 text-left text-[18px] text-[#111]";
+  const row = "flex w-full items-center justify-between border-b border-sd-line px-1 py-4 text-left text-[17px] font-medium text-sd-ink";
 
   return (
-    <div className="fixed inset-x-0 bottom-0 top-[72px] z-40 overflow-y-auto bg-white px-6 pb-10 lg:hidden">
+    <div
+      ref={drawerRef}
+      id="mobile-drawer"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Site menu"
+      className="fixed inset-x-0 bottom-0 top-[68px] z-40 overflow-y-auto bg-white px-6 pb-10 lg:hidden"
+    >
       {stack.length > 0 && (
         <button
           type="button"
           onClick={() => setStack(stack.slice(0, -1))}
-          className="flex items-center gap-1 py-4 text-[15px] font-medium text-[#0a5fbe]"
+          className="flex items-center gap-1 py-4 text-[15px] font-semibold text-sd-blue"
         >
           <ChevronLeft size={16} /> Back
         </button>
@@ -226,7 +240,7 @@ function MobileDrawer({ nav, onNavigate }) {
         TABS.map((t) => (
           <button key={t.key} type="button" className={row} onClick={() => setStack([t.key])}>
             {t.label}
-            <ChevronRight size={18} className="text-[#a3aab5]" />
+            <ChevronRight size={18} className="text-sd-faint" />
           </button>
         ))}
 
@@ -234,7 +248,7 @@ function MobileDrawer({ nav, onNavigate }) {
         menu.rail.map((c) => (
           <button key={c.id} type="button" className={row} onClick={() => setStack([tabKey, c.id])}>
             {c.label}
-            <ChevronRight size={18} className="text-[#a3aab5]" />
+            <ChevronRight size={18} className="text-sd-faint" />
           </button>
         ))}
 
@@ -246,10 +260,10 @@ function MobileDrawer({ nav, onNavigate }) {
               href={it.href}
               external={it.external}
               onClick={onNavigate}
-              className="block border-b border-[#e6e8ee] px-1 py-3.5"
+              className="block border-b border-sd-line px-1 py-3.5"
             >
-              <span className="block text-[17px] text-[#111]">{it.name}</span>
-              {it.blurb && <span className="mt-0.5 block text-[14px] text-[#666]">{it.blurb}</span>}
+              <span className="block text-[16px] font-medium text-sd-ink">{it.name}</span>
+              {it.blurb && <span className="mt-0.5 block text-[14px] text-sd-muted">{it.blurb}</span>}
             </SmartLink>
           ))}
           {menu.cta && (
@@ -283,6 +297,9 @@ export default function CorporateHeader({ nav }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const closeTimer = useRef(null);
   const headerRef = useRef(null);
+  const toggleRef = useRef(null);
+  const drawerRef = useRef(null);
+  const wasMobileOpen = useRef(false);
 
   const cancelClose = useCallback(() => {
     if (closeTimer.current) {
@@ -325,25 +342,62 @@ export default function CorporateHeader({ nav }) {
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
+    // Closing the drawer hands focus back to the menu button.
+    if (wasMobileOpen.current && !mobileOpen) toggleRef.current?.focus();
+    wasMobileOpen.current = mobileOpen;
+    if (!mobileOpen) return () => {
+      document.body.style.overflow = "";
+    };
+
+    // Keep Tab inside the open drawer (plus the close button).
+    const onTab = (e) => {
+      if (e.key !== "Tab" || !drawerRef.current) return;
+      const items = [toggleRef.current, ...drawerRef.current.querySelectorAll(FOCUSABLE)].filter(Boolean);
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", onTab);
     return () => {
       document.body.style.overflow = "";
+      document.removeEventListener("keydown", onTab);
     };
   }, [mobileOpen]);
 
   useEffect(() => cancelClose, [cancelClose]);
 
+  // Transparent over the hero, frosted with a hairline once the page scrolls.
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const menu = open ? nav.menus[open] : null;
+  const solid = scrolled || Boolean(menu) || searchOpen || mobileOpen;
 
   return (
     <header
       ref={headerRef}
       onMouseLeave={scheduleClose}
       onMouseEnter={cancelClose}
-      className="sticky top-0 z-50 w-full border-b border-[#e6e8ee] bg-white"
+      className={`sticky top-0 z-50 w-full border-b transition-[background-color,border-color,box-shadow] duration-300 ${
+        solid
+          ? "border-sd-line bg-white/90 shadow-[0_6px_24px_-12px_rgba(11,27,51,0.15)] backdrop-blur-xl"
+          : "border-transparent bg-white/0"
+      }`}
     >
-      <div className="mx-auto flex h-[72px] max-w-[1500px] items-center px-6 lg:px-8">
-        <Link href="/" className="mr-10 shrink-0" aria-label="ScaleDesk Technology home">
-          <Logo />
+      <div className="mx-auto flex h-[68px] max-w-[1320px] items-center px-6 lg:px-8">
+        <Link href="/" className="mr-8 shrink-0" aria-label="ScaleDesk Technology home">
+          <Logo size="sm" preload />
         </Link>
 
         <nav className="hidden flex-1 items-center lg:flex" aria-label="Primary">
@@ -354,6 +408,7 @@ export default function CorporateHeader({ nav }) {
                 key={t.key}
                 type="button"
                 aria-expanded={isOpen}
+                aria-haspopup="true"
                 aria-controls="mega-panel"
                 onMouseEnter={() => {
                   cancelClose();
@@ -366,18 +421,22 @@ export default function CorporateHeader({ nav }) {
                   setSearchOpen(false);
                   setOpen(t.key);
                 }}
-                className={`flex h-[72px] items-center gap-1.5 px-4 text-[17px] transition-colors ${
-                  isOpen ? "text-[#0a5fbe]" : "text-[#111] hover:text-[#0a5fbe]"
+                className={`relative flex h-[68px] items-center gap-1 px-3 text-[15px] font-medium transition-colors xl:px-3.5 ${
+                  isOpen ? "text-sd-navy" : "text-sd-body hover:text-sd-navy"
                 }`}
               >
                 {t.label}
-                <ChevronDown size={15} className={`text-[#8a93a0] transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                <ChevronDown size={14} className={`text-sd-faint transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                <span
+                  aria-hidden="true"
+                  className={`absolute inset-x-3 bottom-0 h-[2px] rounded-full bg-sd-blue transition-opacity ${isOpen ? "opacity-100" : "opacity-0"}`}
+                />
               </button>
             );
           })}
         </nav>
 
-        <div className="ml-auto hidden items-center gap-6 lg:flex">
+        <div className="ml-auto hidden items-center gap-5 lg:flex">
           <button
             type="button"
             aria-label="Search"
@@ -386,29 +445,27 @@ export default function CorporateHeader({ nav }) {
               setOpen(null);
               setSearchOpen((v) => !v);
             }}
-            className="text-[#111] transition-colors hover:text-[#0a5fbe]"
+            className="flex h-10 w-10 items-center justify-center rounded-full text-sd-body transition-colors hover:bg-sd-surface hover:text-sd-navy"
           >
-            <Search size={23} strokeWidth={1.6} />
+            <Search size={19} strokeWidth={1.8} />
           </button>
           <SmartLink
             href={nav.cta.signIn.href}
             external={nav.cta.signIn.external}
-            className="text-[17px] text-[#0a5fbe] hover:underline"
+            className="text-[15px] font-medium text-sd-body transition-colors hover:text-sd-navy"
           >
-            Sign In
+            Sign in
           </SmartLink>
-          <SmartLink
-            href={nav.cta.primary.href}
-            external={nav.cta.primary.external}
-            className="rounded-full border border-[#0a5fbe] px-6 py-2 text-[17px] text-[#0a5fbe] transition-colors hover:bg-[#0a5fbe] hover:text-white"
-          >
+          <SmartLink href={nav.cta.primary.href} external={nav.cta.primary.external} className="sd-btn sd-btn-primary sd-btn-sm">
             Talk to us
           </SmartLink>
         </div>
 
         <button
+          ref={toggleRef}
           type="button"
-          className="ml-auto flex h-11 w-11 items-center justify-center rounded text-[#111] lg:hidden"
+          aria-controls="mobile-drawer"
+          className="ml-auto flex h-11 w-11 items-center justify-center rounded-xl text-sd-ink lg:hidden"
           onClick={() => setMobileOpen((v) => !v)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
@@ -421,7 +478,7 @@ export default function CorporateHeader({ nav }) {
         <div
           id="mega-panel"
           onMouseEnter={cancelClose}
-          className="sd-mega absolute inset-x-0 top-full hidden border-b border-[#e6e8ee] bg-white shadow-[0_18px_40px_rgba(15,27,23,0.12)] lg:block"
+          className="sd-mega absolute inset-x-0 top-full hidden border-b border-sd-line bg-white shadow-[0_24px_48px_-12px_rgba(11,27,51,0.18)] lg:block"
         >
           <div className="mx-auto max-w-[1300px] px-6 py-7">
             <Panel key={open} menu={menu} />
@@ -430,7 +487,7 @@ export default function CorporateHeader({ nav }) {
       )}
 
       {searchOpen && <SearchPanel index={nav.search} onClose={() => setSearchOpen(false)} />}
-      {mobileOpen && <MobileDrawer nav={nav} onNavigate={() => setMobileOpen(false)} />}
+      {mobileOpen && <MobileDrawer nav={nav} drawerRef={drawerRef} onNavigate={() => setMobileOpen(false)} />}
     </header>
   );
 }

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Check } from "lucide-react";
 import JsonLd from "../seo/JsonLd";
 import Reveal from "../shell/Reveal";
 import PageHero from "./PageHero";
@@ -47,16 +48,22 @@ export default function ContentPage({ page, crumbs, label, related = [], lead, c
         {sections.length > 0 && (
           <section className="bg-white sd-section">
             <div className="sd-container">
-              {sections.map((s, i) => (
-                <Reveal
-                  key={s.title}
-                  delay={(i % 2) * 60}
-                  className="grid gap-4 border-t border-[#dfe8ec] py-9 first:border-t-0 first:pt-0 lg:grid-cols-[0.75fr_1.25fr] lg:gap-14"
-                >
-                  <h2 className="sd-h3">{s.title}</h2>
-                  <p className="text-[18px] leading-relaxed text-[#333]">{s.content}</p>
-                </Reveal>
-              ))}
+              <ol className="flex flex-col">
+                {sections.map((s, i) => (
+                  <Reveal
+                    as="li"
+                    key={s.title}
+                    delay={(i % 2) * 60}
+                    className="grid gap-4 border-t border-sd-line py-10 first:border-t-0 first:pt-0 last:pb-0 lg:grid-cols-[64px_0.75fr_1.25fr] lg:gap-10"
+                  >
+                    <span className="font-display text-[15px] font-bold text-sd-teal-dark" aria-hidden="true">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h2 className="sd-h3">{s.title}</h2>
+                    <p className="text-[17px] leading-relaxed text-sd-body">{s.content}</p>
+                  </Reveal>
+                ))}
+              </ol>
             </div>
           </section>
         )}
@@ -66,10 +73,12 @@ export default function ContentPage({ page, crumbs, label, related = [], lead, c
             <div className="sd-container">
               <Reveal>
                 <p className="sd-label">What we cover</p>
-                <ul className="mt-6 grid gap-x-10 gap-y-3 sm:grid-cols-2">
+                <ul className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                   {topics.map((t) => (
-                    <li key={t} className="flex items-start gap-3 border-b border-[#dfe8ec] py-3 text-[18px] text-[#111]">
-                      <span className="mt-[11px] h-[7px] w-[7px] shrink-0 rounded-full bg-[#00a3b0]" aria-hidden="true" />
+                    <li key={t} className="flex items-start gap-3 rounded-xl border border-sd-line bg-white px-4 py-3.5 text-[15.5px] font-medium text-sd-ink">
+                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-sd-tint text-sd-teal-dark" aria-hidden="true">
+                        <Check size={12} strokeWidth={3} />
+                      </span>
                       {t}
                     </li>
                   ))}
@@ -84,14 +93,17 @@ export default function ContentPage({ page, crumbs, label, related = [], lead, c
             <div className="sd-container">
               <Reveal>
                 <p className="sd-label">Related</p>
-                <ul className="mt-5 flex flex-wrap gap-3">
+                <ul className="mt-6 flex flex-wrap gap-2.5">
                   {related.map((r) => (
                     <li key={r.href}>
                       <Link
                         href={r.href}
-                        className="inline-block rounded-full border border-[#d5dbe0] bg-white px-5 py-2 text-[16px] text-[#333] transition-colors hover:border-[#0a5fbe] hover:text-[#0a5fbe]"
+                        className="inline-flex items-center gap-2 rounded-full border border-sd-line bg-white px-4 py-2 text-[15px] font-medium text-sd-body transition-colors hover:border-sd-navy hover:text-sd-navy"
                       >
                         {r.label}
+                        <span aria-hidden="true" className="text-sd-faint">
+                          &rarr;
+                        </span>
                       </Link>
                     </li>
                   ))}
@@ -101,7 +113,14 @@ export default function ContentPage({ page, crumbs, label, related = [], lead, c
           </section>
         )}
 
-        {page.faqs?.length > 0 && <FaqList faqs={page.faqs} />}
+        {page.faqs?.length > 0 && (
+          <>
+            <div className="sd-container">
+              <div className="border-t border-sd-line" />
+            </div>
+            <FaqList faqs={page.faqs} />
+          </>
+        )}
         <HomeCta title={ctaTitle} lead={ctaLead} />
       </main>
     </>

@@ -7,9 +7,10 @@ import SmartLink from "../../components/shell/SmartLink";
 import PageHero from "../../components/pages/PageHero";
 import HomeCta from "../../components/home/HomeCta";
 import PostCard, { formatDate } from "../../components/blog/PostCard";
+import { ReadingProgress, TableOfContents } from "../../components/blog/ArticleChrome";
 import { getCategory } from "../../../lib/blog/categories";
 import { getPost, getPostSlugs, getRelated, renderMarkdown } from "../../../lib/blog/posts";
-import { IMG, fill } from "../../../lib/images";
+import { IMG, fill, tone } from "../../../lib/images";
 import { buildPageMetadata } from "../../../lib/seo/metadata";
 import { pageGraph } from "../../../lib/seo/schema";
 import { SITE, absoluteUrl } from "../../../lib/seo/config";
@@ -77,50 +78,60 @@ export default async function PostPage({ params }) {
     <>
       <JsonLd data={graph} />
       <main>
+        <ReadingProgress targetId="article-body" />
         <PageHero crumbs={crumbs} label={cat.name} title={post.title} lead={post.description} narrow>
-          <p className="text-[15px] text-[#666]">
-            By ScaleDesk Technology &middot; {formatDate(post.date)}
-            {post.updated !== post.date ? ` (updated ${formatDate(post.updated)})` : ""} &middot; {post.readTime}
-          </p>
+          <div className="flex flex-wrap items-center justify-center gap-3 text-[14.5px] text-sd-muted">
+            <span className="inline-flex items-center gap-2.5">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-sd-navy font-display text-[12px] font-bold text-white">
+                SD
+              </span>
+              <span className="font-medium text-sd-ink">ScaleDesk Technology</span>
+            </span>
+            <span aria-hidden="true" className="text-sd-faint">
+              &middot;
+            </span>
+            <span>
+              {formatDate(post.date)}
+              {post.updated !== post.date ? ` (updated ${formatDate(post.updated)})` : ""}
+            </span>
+            <span aria-hidden="true" className="text-sd-faint">
+              &middot;
+            </span>
+            <span>{post.readTime}</span>
+          </div>
         </PageHero>
 
-        <section className="bg-white sd-section">
-          <div className="sd-container grid gap-10 lg:grid-cols-[250px_1fr] lg:gap-16">
+        <section className="bg-white pb-20 lg:pb-28">
+          <div className="sd-container">
+            <Reveal className="mx-auto -mt-2 max-w-[1080px]">
+              <div className={`relative aspect-[16/7] overflow-hidden rounded-[24px] shadow-[0_30px_60px_-30px_rgba(11,27,51,0.4)] ${tone(cat.image)}`}>
+                <Image {...fill(cat.image, "center 35%")} sizes="(min-width: 1100px) 1080px, 94vw" />
+              </div>
+            </Reveal>
+          </div>
+          <div className="sd-container mt-14 grid gap-10 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-16">
             <aside className="hidden lg:block">
-              <div className="sticky top-28">
-                <p className="sd-label">On this page</p>
-                <ul className="mt-4 space-y-2.5 border-l border-[#dfe8ec] pl-4">
-                  {post.toc.map((t) => (
-                    <li key={t.id}>
-                      <a href={`#${t.id}`} className="text-[15px] leading-snug text-[#333] transition-colors hover:text-[#0a5fbe]">
-                        {t.text}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-                <Link href={`/blog/category/${cat.slug}`} className="sd-link mt-8">
+              <div className="sticky top-32">
+                {post.toc.length > 0 && <TableOfContents items={post.toc} />}
+                <Link href={`/blog/category/${cat.slug}`} className="sd-link mt-8 !text-[15px]">
                   More on {cat.name.toLowerCase()}
                 </Link>
               </div>
             </aside>
 
-            <article className="max-w-[780px]">
-              <Reveal>
-                <div className="relative mb-10 aspect-[16/8] overflow-hidden rounded-3xl">
-                  <Image {...fill(cat.image, "center 35%")} sizes="(min-width: 1024px) 780px, 94vw" />
-                </div>
-              </Reveal>
+            <article id="article-body" className="max-w-[740px]">
               <div className="sd-prose" dangerouslySetInnerHTML={{ __html: html }} />
 
-              <div className="mt-14 rounded-3xl border border-[#dfe8ec] bg-[#f0f8f9] p-8">
-                <h2 className="sd-h3">{cat.cta.title}</h2>
-                <p className="mt-3 text-[17px] leading-relaxed text-[#333]">{cat.cta.text}</p>
-                <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-4">
-                  <Link href={cat.cta.href} className="sd-btn sd-btn-primary">
+              <div className="sd-gradient-card mt-16 p-8 sm:p-10">
+                <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#7fe3ea]">{cat.name}</p>
+                <h2 className="mt-3 font-display text-[clamp(22px,2vw,28px)] font-bold leading-tight tracking-tight">{cat.cta.title}</h2>
+                <p className="mt-3 max-w-[560px] text-[16px] leading-relaxed text-white/80">{cat.cta.text}</p>
+                <div className="mt-7 flex flex-wrap items-center gap-3">
+                  <Link href={cat.cta.href} className="sd-btn sd-btn-light">
                     {cat.cta.label}
                   </Link>
                   {cat.cta.appUrl && (
-                    <SmartLink href={cat.cta.appUrl} external className="sd-link">
+                    <SmartLink href={cat.cta.appUrl} external className="sd-btn sd-btn-ghost-light sd-btn-plain">
                       {cat.cta.appLabel}
                     </SmartLink>
                   )}
@@ -133,10 +144,16 @@ export default async function PostPage({ params }) {
         {related.length > 0 && (
           <section className="sd-surface sd-section">
             <div className="sd-container">
-              <Reveal className="mb-10">
-                <p className="sd-label">Keep reading</p>
+              <Reveal className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+                <div>
+                  <p className="sd-label">Keep reading</p>
+                  <h2 className="sd-h2 mt-4">More guides on {cat.name.toLowerCase()}</h2>
+                </div>
+                <Link href="/blog" className="sd-btn sd-btn-outline shrink-0">
+                  All articles
+                </Link>
               </Reveal>
-              <div className="grid gap-6 md:grid-cols-3">
+              <div className="grid gap-5 md:grid-cols-3">
                 {related.map((p) => (
                   <PostCard key={p.slug} post={p} />
                 ))}

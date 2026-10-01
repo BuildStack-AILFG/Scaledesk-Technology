@@ -50,17 +50,18 @@ export default function BlogHub({ data }) {
         {data.page === 1 && (
           <section className="sd-surface sd-section">
             <div className="sd-container">
-              <Reveal className="mx-auto max-w-[760px] text-center">
-                <h2 className="sd-h2">Browse by topic</h2>
-                <span className="sd-dash" aria-hidden="true" />
+              <Reveal className="mx-auto max-w-[720px] text-center">
+                <p className="sd-label">Topics</p>
+                <h2 className="sd-h2 mt-4">Browse by topic</h2>
               </Reveal>
-              <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {CATEGORIES.map((c, i) => (
-                  <Reveal key={c.slug} delay={(i % 3) * 80} className="border-t-2 pt-5" style={{ borderColor: c.accent }}>
-                    <h3 className="text-[22px] font-normal text-[#111]">{c.name}</h3>
-                    <p className="mt-2 text-[16px] leading-snug text-[#555]">{c.description}</p>
-                    <Link href={`/blog/category/${c.slug}`} className="sd-link mt-4">
-                      Read the guides
+                  <Reveal key={c.slug} delay={(i % 3) * 80}>
+                    <Link href={`/blog/category/${c.slug}`} className="sd-card-link group flex h-full flex-col p-7">
+                      <span className="h-1 w-10 rounded-full" style={{ background: c.accent }} aria-hidden="true" />
+                      <h3 className="sd-h3 mt-5 transition-colors group-hover:text-sd-blue">{c.name}</h3>
+                      <p className="mt-2 flex-1 text-[15px] leading-relaxed text-sd-muted">{c.description}</p>
+                      <span className="sd-link mt-6 !text-[15px]">Read the guides</span>
                     </Link>
                   </Reveal>
                 ))}

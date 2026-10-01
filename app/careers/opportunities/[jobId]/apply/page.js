@@ -1,5 +1,6 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Briefcase, Clock, MapPin } from "lucide-react";
+import PageHero from "../../../../components/pages/PageHero";
 import JobApplicationForm from "../../../../components/careers/JobApplicationForm";
 import { getJobById } from "../../../../data/careers";
 
@@ -23,38 +24,31 @@ export default async function JobApplyPage({ params }) {
 
   if (!job) notFound();
 
+  const crumbs = [
+    { name: "Home", href: "/" },
+    { name: "Careers", href: "/careers" },
+    { name: "Open roles", href: "/careers/opportunities" },
+    { name: job.title, href: `/careers/opportunities/${job.id}/apply` },
+  ];
+  const meta = [
+    { icon: Briefcase, v: job.department },
+    { icon: Clock, v: job.type },
+    { icon: MapPin, v: job.location },
+  ].filter((m) => m.v);
+
   return (
-    <main className="bg-zinc-50 text-zinc-900 min-h-screen">
-      <section className="border-b border-zinc-200 bg-white">
-        <div className="max-w-3xl mx-auto px-6 xl:px-12 py-12 md:py-16">
-          <Link
-            href="/careers/opportunities"
-            className="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-900 text-sm font-medium mb-8 transition-colors"
-          >
-            ← Back to open roles
-          </Link>
+    <main>
+      <PageHero crumbs={crumbs} label={`Role ${job.id}`} title={`Apply for ${job.title}`} lead={job.description} narrow>
+        {meta.map(({ icon: Icon, v }) => (
+          <span key={v} className="sd-chip !px-3.5 !py-1.5 !text-[14px]">
+            <Icon size={14} className="text-sd-muted" aria-hidden="true" />
+            {v}
+          </span>
+        ))}
+      </PageHero>
 
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-[#0a5fbe] mb-3">
-            {job.id}
-          </p>
-          <h1
-            className="text-3xl md:text-4xl font-semibold tracking-tight leading-tight mb-4"
-            style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}
-          >
-            Apply for {job.title}
-          </h1>
-          <p className="text-zinc-600 leading-relaxed max-w-2xl mb-6">{job.description}</p>
-
-          <div className="flex flex-wrap gap-3 text-xs uppercase tracking-wider text-zinc-500">
-            <span className="border border-zinc-200 px-2.5 py-1">{job.department}</span>
-            <span className="border border-zinc-200 px-2.5 py-1">{job.type}</span>
-            <span className="border border-zinc-200 px-2.5 py-1">{job.location}</span>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-12 md:py-16">
-        <div className="max-w-3xl mx-auto px-6 xl:px-12">
+      <section className="sd-surface py-14 md:py-20">
+        <div className="mx-auto max-w-3xl px-6">
           <JobApplicationForm job={job} />
         </div>
       </section>

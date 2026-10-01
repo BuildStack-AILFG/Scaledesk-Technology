@@ -58,7 +58,7 @@ export default async function CategoryPage({ params }) {
             <Reveal>
               <CategoryChips active={c.slug} />
             </Reveal>
-            <Reveal className="mx-auto mt-12 max-w-[820px] space-y-5 text-[19px] leading-relaxed text-[#333]">
+            <Reveal className="mx-auto mt-12 max-w-[780px] space-y-5 text-[18px] leading-relaxed text-sd-body">
               {c.intro.map((p) => (
                 <p key={p.slice(0, 24)}>{p}</p>
               ))}
@@ -69,17 +69,17 @@ export default async function CategoryPage({ params }) {
           </div>
         </section>
 
-        <section className="sd-surface sd-section-tight">
+        <section className="bg-white pb-6">
           <div className="sd-container">
-            <Reveal className="mx-auto max-w-[820px] rounded-3xl border border-[#dfe8ec] bg-white p-8 text-center">
-              <h2 className="sd-h3">{c.cta.title}</h2>
-              <p className="mt-3 text-[17px] leading-relaxed text-[#444]">{c.cta.text}</p>
-              <div className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-                <Link href={c.cta.href} className="sd-btn sd-btn-primary">
+            <Reveal className="sd-gradient-card mx-auto max-w-[960px] p-8 text-center sm:p-12">
+              <h2 className="font-display text-[clamp(22px,2.2vw,30px)] font-bold leading-tight tracking-tight">{c.cta.title}</h2>
+              <p className="mx-auto mt-3 max-w-[600px] text-[16px] leading-relaxed text-white/80">{c.cta.text}</p>
+              <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+                <Link href={c.cta.href} className="sd-btn sd-btn-light">
                   {c.cta.label}
                 </Link>
                 {c.cta.appUrl && (
-                  <SmartLink href={c.cta.appUrl} external className="sd-link">
+                  <SmartLink href={c.cta.appUrl} external className="sd-btn sd-btn-ghost-light sd-btn-plain">
                     {c.cta.appLabel}
                   </SmartLink>
                 )}

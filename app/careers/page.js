@@ -1,8 +1,10 @@
 import Link from "next/link";
+import FramedPhoto from "../components/pages/FramedPhoto";
 import JsonLd from "../components/seo/JsonLd";
 import Reveal from "../components/shell/Reveal";
 import PageHero from "../components/pages/PageHero";
 import HomeCta from "../components/home/HomeCta";
+import JobCard from "../components/careers/JobCard";
 import { OPPORTUNITIES } from "../data/careers";
 import { buildPageMetadata } from "../../lib/seo/metadata";
 import { pageGraph } from "../../lib/seo/schema";
@@ -45,19 +47,30 @@ export default function CareersPage() {
           label="Careers"
           title="Build the technology behind business growth"
           lead="Join a team of engineers, designers and problem-solvers building products that help businesses sell more."
+          aside={
+            <FramedPhoto name="engineering" position="center 40%" />
+          }
         >
           <Link href="/careers/opportunities" className="sd-btn sd-btn-primary">
             View open roles
+          </Link>
+          <Link href="/careers/track" className="sd-btn sd-btn-outline sd-btn-plain">
+            Track an application
           </Link>
         </PageHero>
 
         <section className="bg-white sd-section">
           <div className="sd-container">
-            <div className="grid gap-x-8 gap-y-10 sm:grid-cols-3">
+            <Reveal className="mx-auto max-w-[720px] text-center">
+              <p className="sd-label">Why ScaleDesk</p>
+              <h2 className="sd-h2 mt-4">Do the best work of your career</h2>
+            </Reveal>
+            <div className="mt-14 grid gap-5 sm:grid-cols-3">
               {POINTS.map((p, i) => (
-                <Reveal key={p.title} delay={i * 80} className="border-t-2 border-[#00a3b0] pt-5">
-                  <h2 className="sd-h3">{p.title}</h2>
-                  <p className="mt-3 text-[16px] leading-relaxed text-[#333]">{p.body}</p>
+                <Reveal key={p.title} delay={i * 80} className="sd-card h-full p-7">
+                  <span className="font-display text-[15px] font-bold text-sd-teal-dark">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="sd-h3 mt-4">{p.title}</h3>
+                  <p className="mt-3 text-[15.5px] leading-relaxed text-sd-muted">{p.body}</p>
                 </Reveal>
               ))}
             </div>
@@ -66,30 +79,25 @@ export default function CareersPage() {
 
         <section className="sd-surface sd-section">
           <div className="sd-container">
-            <Reveal className="flex flex-wrap items-end justify-between gap-4">
-              <h2 className="sd-h2">Open roles</h2>
-              <Link href="/careers/opportunities" className="sd-link">
+            <Reveal className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+              <div>
+                <p className="sd-label">Open roles</p>
+                <h2 className="sd-h2 mt-4">Find your next role</h2>
+              </div>
+              <Link href="/careers/opportunities" className="sd-btn sd-btn-outline shrink-0">
                 See all roles
               </Link>
             </Reveal>
-            <ul className="mt-8 border-t border-[#dfe8ec]">
-              {OPPORTUNITIES.slice(0, 5).map((job) => (
-                <li key={job.id} className="border-b border-[#dfe8ec]">
-                  <Link href={`/careers/opportunities/${job.id}/apply`} className="group flex flex-wrap items-center justify-between gap-3 py-5">
-                    <span>
-                      <span className="block text-[21px] text-[#111] transition-colors group-hover:text-[#0a5fbe]">{job.title}</span>
-                      <span className="mt-1 block text-[15px] text-[#666]">
-                        {job.department} &middot; {job.type} &middot; {job.location}
-                      </span>
-                    </span>
-                    <span className="sd-link">Apply</span>
-                  </Link>
-                </li>
+            <ul className="mt-12 flex flex-col gap-3">
+              {OPPORTUNITIES.slice(0, 5).map((job, i) => (
+                <Reveal as="li" key={job.id} delay={i * 50}>
+                  <JobCard job={job} />
+                </Reveal>
               ))}
             </ul>
-            <p className="mt-6 text-[15px] text-[#555]">
+            <p className="mt-8 text-[15px] text-sd-muted">
               Already applied?{" "}
-              <Link href="/careers/track" className="text-[#0a5fbe] underline">
+              <Link href="/careers/track" className="font-medium text-sd-blue underline underline-offset-2 hover:text-sd-navy">
                 Track your application
               </Link>
               .

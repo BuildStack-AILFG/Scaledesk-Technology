@@ -4,11 +4,12 @@ import Image from "next/image";
  * The ScaleDesk logo exactly as supplied (public/brand/scaledesk-logo-source.jpg),
  * trimmed of its white margin, sharpened and given a transparent background so it
  * sits cleanly on light surfaces. Do not restyle or recolour it.
+ * Pass `preload` only for the above-the-fold instance (the header).
  */
 const SIZES = { sm: 44, md: 56, lg: 76 };
 const RATIO = 728 / 592;
 
-export default function Logo({ size = "md", className = "" }) {
+export default function Logo({ size = "md", className = "", preload = false }) {
   const h = SIZES[size] ?? SIZES.md;
   return (
     <Image
@@ -18,7 +19,7 @@ export default function Logo({ size = "md", className = "" }) {
       width={Math.round(h * RATIO)}
       className={className}
       style={{ height: h, width: "auto" }}
-      preload={size === "md"}
+      preload={preload}
     />
   );
 }

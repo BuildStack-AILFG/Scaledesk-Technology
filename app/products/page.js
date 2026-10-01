@@ -1,5 +1,6 @@
 import JsonLd from "../components/seo/JsonLd";
-import Reveal from "../components/shell/Reveal";
+import Link from "next/link";
+import PageHero from "../components/pages/PageHero";
 import FeaturedCard from "../components/home/FeaturedCard";
 import PlatformsBand from "../components/home/PlatformsBand";
 import HomeCta from "../components/home/HomeCta";
@@ -33,39 +34,38 @@ export default function PlatformsHubPage() {
     <>
       <JsonLd data={graph} />
       <main>
-        <section className="sd-wave">
-          <div className="mx-auto max-w-[1000px] px-6 pb-12 pt-14 text-center lg:pb-14 lg:pt-20">
-            <Reveal>
-              <h1 className="sd-h1">One growth suite for your business</h1>
-              <span className="sd-dash" aria-hidden="true" />
-            </Reveal>
-            <Reveal delay={100}>
-              <p className="sd-lead mx-auto mt-8 max-w-[780px]">
-                Platforms we built to capture leads, talk to customers, engage on social channels and look after your
-                people. Use one on its own, or all four together.
-              </p>
-            </Reveal>
-          </div>
-          <div className="pb-12 lg:pb-16">
-            <FeaturedCard
-              columns={2}
-              label="Platforms"
-              link={{ label: "Talk to our experts", href: "/contact" }}
-              promo={{
-                title: "The ForGrow suite",
-                blurb: "Leads, conversations, social and people, designed to work together.",
-                cta: "Talk to our experts",
-                href: "/contact",
-              }}
-              items={PLATFORMS_NAV.map((p) => ({
-                name: p.displayName,
-                blurb: p.descriptor,
-                href: p.href,
-                mark: p.mark,
-                accent: p.accent,
-              }))}
-            />
-          </div>
+        <PageHero
+          crumbs={[
+            { name: "Home", href: "/" },
+            { name: "Platforms", href: "/products" },
+          ]}
+          label="Platforms"
+          title="One growth suite for your business"
+          lead="Platforms we built to capture leads, talk to customers, engage on social channels and look after your people. Use one on its own, or all four together."
+        >
+          <Link href="/contact" className="sd-btn sd-btn-primary">
+            Talk to our experts
+          </Link>
+        </PageHero>
+        <section className="bg-white pb-16 pt-4 lg:pb-24">
+          <FeaturedCard
+            columns={2}
+            label="Platforms"
+            link={{ label: "Talk to our experts", href: "/contact" }}
+            promo={{
+              title: "The ForGrow suite",
+              blurb: "Leads, conversations, social and people, designed to work together.",
+              cta: "Talk to our experts",
+              href: "/contact",
+            }}
+            items={PLATFORMS_NAV.map((p) => ({
+              name: p.displayName,
+              blurb: p.descriptor,
+              href: p.href,
+              mark: p.mark,
+              accent: p.accent,
+            }))}
+          />
         </section>
         <PlatformsBand />
         <HomeCta />

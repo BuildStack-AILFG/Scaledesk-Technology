@@ -3,36 +3,32 @@ import Reveal from "../shell/Reveal";
 
 /**
  * Hub grid (services, industries, glossary): optional group headings, each
- * with clean link tiles: name, one-line description, chevron.
+ * with link cards: name, one-line description, arrow.
  * groups: [{ title?, items: [{ name, blurb, href }] }]
  */
 export default function HubList({ groups }) {
   return (
-    <section className="bg-white sd-section">
-      <div className="sd-container space-y-14">
+    <section className="sd-surface sd-section">
+      <div className="sd-container space-y-16">
         {groups.map((g, gi) => (
           <div key={g.title ?? gi}>
             {g.title && (
-              <Reveal>
-                <h2 className="sd-h3 mb-6 border-b border-[#dfe8ec] pb-4">{g.title}</h2>
+              <Reveal className="mb-7 flex items-baseline justify-between gap-4 border-b border-sd-line pb-4">
+                <h2 className="font-display text-[clamp(22px,2vw,28px)] font-bold tracking-tight text-sd-ink">{g.title}</h2>
+                <span className="shrink-0 text-[14px] font-medium text-sd-muted">
+                  {g.items.length} {g.items.length === 1 ? "item" : "items"}
+                </span>
               </Reveal>
             )}
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {g.items.map((it, i) => (
                 <Reveal key={it.href} delay={(i % 3) * 70}>
-                  <Link
-                    href={it.href}
-                    className="group flex h-full flex-col rounded-3xl border border-[#dfe8ec] bg-white p-6 transition-shadow hover:shadow-[0_14px_34px_-18px_rgba(6,33,79,0.35)]"
-                  >
-                    <span className="flex items-start justify-between gap-3">
-                      <span className="text-[22px] font-normal leading-snug text-[#111] transition-colors group-hover:text-[#0a5fbe]">
-                        {it.name}
-                      </span>
-                      <span className="text-[24px] leading-none text-[#a3aab5] transition-transform group-hover:translate-x-1 group-hover:text-[#0a5fbe]">
-                        &rsaquo;
-                      </span>
+                  <Link href={it.href} className="sd-card-link group flex h-full flex-col p-7">
+                    <span className="font-display text-[19px] font-semibold leading-snug tracking-tight text-sd-ink transition-colors group-hover:text-sd-blue">
+                      {it.name}
                     </span>
-                    {it.blurb && <span className="mt-3 block text-[16px] leading-snug text-[#555]">{it.blurb}</span>}
+                    {it.blurb && <span className="mt-3 block flex-1 text-[15px] leading-relaxed text-sd-muted">{it.blurb}</span>}
+                    <span className="sd-link mt-6 !text-[15px]">Learn more</span>
                   </Link>
                 </Reveal>
               ))}

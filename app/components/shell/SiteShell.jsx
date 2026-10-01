@@ -23,8 +23,17 @@ export default function SiteShell({ nav, children }) {
         <noscript>
           <style>{`[data-shell="corporate"] .sd-reveal{opacity:1!important;transform:none!important}`}</style>
         </noscript>
+        {/* First focusable element: lets keyboard users jump past the header. */}
+        <a
+          href="#main"
+          className="sr-only rounded-xl bg-sd-navy px-5 py-3 text-[15px] font-semibold text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60]"
+        >
+          Skip to content
+        </a>
         <CorporateHeader nav={nav} />
-        <div className="flex-1">{children}</div>
+        <div id="main" tabIndex={-1} className="flex-1 scroll-mt-[68px] outline-none">
+          {children}
+        </div>
         <CorporateFooter nav={nav} />
       </div>
     );
