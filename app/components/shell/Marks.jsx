@@ -18,7 +18,7 @@ const PATHS = {
       <path d="M22 24h20a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4h-2v5l-6-5H22a4 4 0 0 1-4-4v-8a4 4 0 0 1 4-4Z" fill="#fff" stroke={c} strokeWidth="2" strokeLinejoin="round" />
     </>
   ),
-  // EngageForGrow: concentric rings with a signal dot
+  // GramForGrow: concentric rings with a signal dot
   engage: (c, t) => (
     <>
       <circle cx="22" cy="26" r="17" fill={t} stroke={c} strokeWidth="2" />

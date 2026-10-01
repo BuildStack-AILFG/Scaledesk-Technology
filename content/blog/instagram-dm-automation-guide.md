@@ -58,7 +58,7 @@ The real value appears when Instagram conversations become tracked leads. When s
 4. Test with a few colleagues.
 5. Review real conversations weekly and improve.
 
-[EngageForGrow](/products/engageforgrow) is our platform for this: it is designed to bring Instagram messages and comments into one shared inbox, with automated replies and a route into your CRM.
+[GramForGrow](/products/gramforgrow) is our platform for this: it is designed to bring Instagram messages and comments into one shared inbox, with automated replies and a route into your CRM.
 
 ## Frequently asked questions
 

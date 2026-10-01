@@ -66,7 +66,7 @@ Track which posts, reels and stories lead to conversations and sales, not just t
 - **Twice a week:** publish content that invites questions.
 - **Friday:** update your CRM and plan next week's follow-ups.
 
-[EngageForGrow](/products/engageforgrow) is designed to bring Instagram messages and comments into one inbox and pass interested people to your CRM, so this path stays connected.
+[GramForGrow](/products/gramforgrow) is designed to bring Instagram messages and comments into one inbox and pass interested people to your CRM, so this path stays connected.
 
 ## Frequently asked questions
 

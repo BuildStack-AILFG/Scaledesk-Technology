@@ -55,7 +55,7 @@ Read about this in [chatbot hand-off design](/blog/whatsapp-chatbot-with-human-h
 
 ## Step 5: Work on the channels customers use
 
-Support conversations happen on WhatsApp, Instagram, email and the phone. A shared inbox that brings them together, with the agent answering first and people stepping in, keeps the experience consistent. See [TalkForGrow](/products/talkforgrow) and [EngageForGrow](/products/engageforgrow) for messaging platforms.
+Support conversations happen on WhatsApp, Instagram, email and the phone. A shared inbox that brings them together, with the agent answering first and people stepping in, keeps the experience consistent. See [TalkForGrow](/products/talkforgrow) and [GramForGrow](/products/gramforgrow) for messaging platforms.
 
 ## Step 6: Measure
 

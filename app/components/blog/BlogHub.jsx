@@ -3,6 +3,7 @@ import JsonLd from "../seo/JsonLd";
 import Reveal from "../shell/Reveal";
 import PageHero from "../pages/PageHero";
 import HomeCta from "../home/HomeCta";
+import { Arrow, IconTile, accent } from "../ui/CardParts";
 import { CategoryChips, Pagination, PostGrid } from "./BlogListing";
 import { CATEGORIES } from "../../../lib/blog/categories";
 import { pageGraph, collectionPageSchema } from "../../../lib/seo/schema";
@@ -57,11 +58,20 @@ export default function BlogHub({ data }) {
               <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {CATEGORIES.map((c, i) => (
                   <Reveal key={c.slug} delay={(i % 3) * 80}>
-                    <Link href={`/blog/category/${c.slug}`} className="sd-card-link group flex h-full flex-col p-7">
-                      <span className="h-1 w-10 rounded-full" style={{ background: c.accent }} aria-hidden="true" />
-                      <h3 className="sd-h3 mt-5 transition-colors group-hover:text-sd-blue">{c.name}</h3>
+                    <Link
+                      href={`/blog/category/${c.slug}`}
+                      className="sd-fcard sd-fcard-tint group flex h-full flex-col p-7"
+                      style={accent(c.accent)}
+                    >
+                      <IconTile text={c.name.charAt(0)} />
+                      <h3 className="sd-h3 mt-6">{c.name}</h3>
                       <p className="mt-2 flex-1 text-[15px] leading-relaxed text-sd-muted">{c.description}</p>
-                      <span className="sd-link mt-6 !text-[15px]">Read the guides</span>
+                      <span className="mt-6 flex items-center justify-between">
+                        <span className="text-[14.5px] font-semibold" style={{ color: c.accent }}>
+                          Read the guides
+                        </span>
+                        <Arrow />
+                      </span>
                     </Link>
                   </Reveal>
                 ))}

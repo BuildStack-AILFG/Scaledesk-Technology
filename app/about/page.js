@@ -1,9 +1,9 @@
 import Link from "next/link";
 import FramedPhoto from "../components/pages/FramedPhoto";
-import { Building2, Mail, MapPin, Phone } from "lucide-react";
+import { Building2, Mail, MapPin, Phone, Sparkles } from "lucide-react";
 import JsonLd from "../components/seo/JsonLd";
 import Reveal from "../components/shell/Reveal";
-import Mark from "../components/shell/Marks";
+import { Arrow, IconTile, accent } from "../components/ui/CardParts";
 import PageHero from "../components/pages/PageHero";
 import StatsBand from "../components/home/StatsBand";
 import HomeCta from "../components/home/HomeCta";
@@ -29,6 +29,8 @@ const crumbs = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
 ];
+
+const VALUE_ACCENTS = ["#0A5FBE", "#00A3B0", "#7C4DFF", "#E58A00"];
 
 const VALUES = [
   { n: "01", title: "Business first", body: "We judge our work by what it does for your business, not by how many features it has." },
@@ -130,35 +132,43 @@ export default function AboutPage() {
             <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {PLATFORMS_NAV.map((p, i) => (
                 <Reveal key={p.slug} delay={i * 80}>
-                  <Link href={p.href} className="sd-card-link group flex h-full flex-col p-7">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-sd-surface">
-                      <Mark name={p.mark} size={30} color={p.accent} />
-                    </span>
-                    <h3 className="sd-h3 mt-5 transition-colors group-hover:text-sd-blue">{p.displayName}</h3>
+                  <Link href={p.href} className="sd-fcard group flex h-full flex-col p-7" style={accent(p.accent)}>
+                    <IconTile logo={p.logo} mark={p.mark} color={p.accent} />
+                    <h3 className="sd-h3 mt-6">{p.displayName}</h3>
                     <p className="mt-2 flex-1 text-[15px] leading-relaxed text-sd-muted">{p.descriptor}</p>
-                    <span className="sd-link mt-6 !text-[15px]">Explore</span>
+                    <span className="mt-6 flex items-center justify-between">
+                      <span className="text-[14.5px] font-semibold text-sd-blue">Explore</span>
+                      <Arrow />
+                    </span>
                   </Link>
                 </Reveal>
               ))}
             </div>
             <Reveal className="mt-5 grid gap-5 md:grid-cols-2">
-              <Link href="/agents" className="sd-gradient-card group block p-8 transition-transform hover:-translate-y-0.5">
-                <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-[#7fe3ea]">AI agents</p>
-                <h3 className="mt-3 font-display text-[24px] font-bold tracking-tight">{AGENT_SUITE.name}</h3>
-                <p className="mt-2 text-[15.5px] leading-relaxed text-white/80">
+              <Link href="/agents" className="sd-fcard sd-fcard-dark group flex flex-col p-8 sm:p-9">
+                <span className="sd-fcard-grid" aria-hidden="true" />
+                <IconTile icon={Sparkles} />
+                <p className="mt-6 text-[12px] font-semibold uppercase tracking-[0.14em] text-[#7fe3ea]">AI agents</p>
+                <h3 className="mt-2 font-display text-[26px] font-bold tracking-tight">{AGENT_SUITE.name}</h3>
+                <p className="mt-2 flex-1 text-[15.5px] leading-relaxed text-white/75">
                   AI agents for sales, support, voice, finance, hiring and marketing.
                 </p>
-                <span className="mt-6 inline-flex items-center gap-1.5 text-[15px] font-semibold">
-                  Meet the agents <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">&rarr;</span>
+                <span className="mt-7 flex items-center justify-between">
+                  <span className="text-[15px] font-semibold text-white">Meet the agents</span>
+                  <Arrow />
                 </span>
               </Link>
-              <Link href="/services" className="sd-card-link group block p-8">
-                <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-sd-teal-dark">Expert services</p>
-                <h3 className="mt-3 font-display text-[24px] font-bold tracking-tight text-sd-ink">Custom technology, built with you</h3>
-                <p className="mt-2 text-[15.5px] leading-relaxed text-sd-muted">
+              <Link href="/services" className="sd-fcard sd-fcard-tint group flex flex-col p-8 sm:p-9" style={accent("#7C4DFF")}>
+                <IconTile mark="code" color="#7C4DFF" />
+                <p className="mt-6 text-[12px] font-semibold uppercase tracking-[0.14em] text-[#7C4DFF]">Expert services</p>
+                <h3 className="mt-2 font-display text-[26px] font-bold tracking-tight text-sd-ink">Custom technology, built with you</h3>
+                <p className="mt-2 flex-1 text-[15.5px] leading-relaxed text-sd-muted">
                   Our engineers plan, build and run what you need around the way you work.
                 </p>
-                <span className="sd-link mt-6 !text-[15px]">Explore services</span>
+                <span className="mt-7 flex items-center justify-between">
+                  <span className="text-[15px] font-semibold text-sd-ink">Explore services</span>
+                  <Arrow />
+                </span>
               </Link>
             </Reveal>
           </div>
@@ -172,9 +182,16 @@ export default function AboutPage() {
             </Reveal>
             <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
               {VALUES.map((v, i) => (
-                <Reveal key={v.title} delay={i * 80} className="sd-card h-full p-7">
-                  <span className="font-display text-[15px] font-bold text-sd-teal-dark">{v.n}</span>
-                  <h3 className="sd-h3 mt-4">{v.title}</h3>
+                <Reveal
+                  key={v.title}
+                  delay={i * 80}
+                  className="sd-fcard sd-fcard-tint is-hoverable h-full p-7"
+                  style={accent(VALUE_ACCENTS[i % VALUE_ACCENTS.length])}
+                >
+                  <span className="sd-numeral block" aria-hidden="true">
+                    {v.n}
+                  </span>
+                  <h3 className="sd-h3 mt-6">{v.title}</h3>
                   <p className="mt-3 text-[15.5px] leading-relaxed text-sd-muted">{v.body}</p>
                 </Reveal>
               ))}

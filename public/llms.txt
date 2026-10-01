@@ -1,7 +1,7 @@
 # ScaleDesk Technology — llms.txt
 # https://scaledesktechnology.com
 
-> ScaleDesk Technology is a product company that helps businesses grow their sales with software platforms (LeadForGrow, TalkForGrow, EngageForGrow, PeopleForGrow), AI agents (ForGrow AI) and expert engineering services. Mission: uplift every business with AI and automation.
+> ScaleDesk Technology is a product company that helps businesses grow their sales with software platforms (LeadForGrow, TalkForGrow, GramForGrow, PeopleForGrow), AI agents (ForGrow AI) and expert engineering services. Mission: uplift every business with AI and automation.
 
 ## Company
 
@@ -16,7 +16,7 @@
 
 - LeadForGrow CRM: capture, assign and follow up every lead. https://scaledesktechnology.com/products/leadforgrow-crm (app: https://leadforgrow.com)
 - TalkForGrow: run customer conversations on messaging apps. https://scaledesktechnology.com/products/talkforgrow (app: https://talkforgrow.in)
-- EngageForGrow: social messages and comments in one inbox. https://scaledesktechnology.com/products/engageforgrow
+- GramForGrow: social messages and comments in one inbox. https://scaledesktechnology.com/products/gramforgrow
 - PeopleForGrow: attendance, payroll and the employee lifecycle. https://scaledesktechnology.com/products/peopleforgrow
 
 ## AI agents (ForGrow AI)

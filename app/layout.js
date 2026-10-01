@@ -20,10 +20,11 @@ const inter = Inter({
 // Display face for headings; Inter stays the body face.
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["500", "600", "700", "800"],
   variable: "--font-jakarta",
   display: "swap",
 });
+
 
 export const metadata = buildPageMetadata({
   title: "Products That Grow Your Business — AI Agents & Platforms",

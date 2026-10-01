@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { ArrowUpRight, ChevronDown, ChevronLeft, ChevronRight, Menu, Search, X } from "lucide-react";
 import Logo from "./Logo";
 import SmartLink from "./SmartLink";
-import Mark from "./Marks";
+import ProductLogo from "./ProductLogo";
 
 const TABS = [
   { key: "platforms", label: "Platforms" },
@@ -28,7 +28,7 @@ function ItemRow({ item }) {
     >
       {item.mark ? (
         <span className="mt-0.5 shrink-0">
-          <Mark name={item.mark} size={34} color={item.accent} />
+          <ProductLogo product={item} size={34} />
         </span>
       ) : null}
       <span className="min-w-0">

@@ -9,15 +9,15 @@ import { pageGraph, collectionPageSchema } from "../../lib/seo/schema";
 import { PLATFORMS_NAV } from "../../lib/nav";
 
 const PAGE_DESCRIPTION =
-  "ScaleDesk platforms: LeadForGrow CRM, TalkForGrow messaging, EngageForGrow social and PeopleForGrow HR, one growth suite for leads, conversations, social and people.";
+  "ScaleDesk platforms: LeadForGrow CRM, TalkForGrow messaging, GramForGrow social and PeopleForGrow HR, one growth suite for leads, conversations, social and people.";
 
 export const metadata = buildPageMetadata({
-  title: "Platforms — LeadForGrow, TalkForGrow, EngageForGrow & PeopleForGrow",
-  seoTitle: "Platforms: LeadForGrow, TalkForGrow, EngageForGrow | ScaleDesk",
+  title: "Platforms — LeadForGrow, TalkForGrow, GramForGrow & PeopleForGrow",
+  seoTitle: "Platforms: LeadForGrow, TalkForGrow, GramForGrow | ScaleDesk",
   metaDescription: PAGE_DESCRIPTION,
   path: "/products",
   primaryKeyword: "LeadForGrow",
-  secondaryKeywords: ["TalkForGrow", "EngageForGrow", "PeopleForGrow", "ScaleDesk platforms"],
+  secondaryKeywords: ["TalkForGrow", "GramForGrow", "PeopleForGrow", "ScaleDesk platforms"],
 });
 
 export default function PlatformsHubPage() {
@@ -63,6 +63,7 @@ export default function PlatformsHubPage() {
               blurb: p.descriptor,
               href: p.href,
               mark: p.mark,
+              logo: p.logo,
               accent: p.accent,
             }))}
           />

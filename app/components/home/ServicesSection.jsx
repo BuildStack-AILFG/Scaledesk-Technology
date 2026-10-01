@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "../shell/Reveal";
-import Mark from "../shell/Marks";
+import { Arrow, IconTile, accent } from "../ui/CardParts";
 import { fill, tone } from "../../../lib/images";
 import { SERVICE_CATEGORIES } from "../../../lib/nav";
 
@@ -30,22 +30,13 @@ export default function ServicesSection() {
         <ul className="flex flex-col gap-3">
           {SERVICE_CATEGORIES.map((s, i) => (
             <Reveal as="li" key={s.slug} delay={i * 50}>
-              <Link href={s.href} className="sd-card-link group flex items-start gap-5 p-5 sm:p-6">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-sd-surface">
-                  <Mark name={s.mark} size={30} color={s.accent} />
-                </span>
+              <Link href={s.href} className="sd-fcard group flex items-center gap-5 p-5 sm:p-6" style={accent(s.accent)}>
+                <IconTile mark={s.mark} color={s.accent} size={50} />
                 <span className="min-w-0 flex-1">
-                  <span className="block font-display text-[18px] font-semibold tracking-tight text-sd-ink transition-colors group-hover:text-sd-blue">
-                    {s.name}
-                  </span>
+                  <span className="block font-display text-[18px] font-semibold tracking-tight text-sd-ink">{s.name}</span>
                   <span className="mt-1 block text-[15px] leading-relaxed text-sd-muted">{s.blurb}</span>
                 </span>
-                <span
-                  aria-hidden="true"
-                  className="mt-3 text-[18px] text-sd-faint transition-all group-hover:translate-x-1 group-hover:text-sd-blue"
-                >
-                  &rarr;
-                </span>
+                <Arrow />
               </Link>
             </Reveal>
           ))}

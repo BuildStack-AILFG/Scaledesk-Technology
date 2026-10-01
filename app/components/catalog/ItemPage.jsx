@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { ArrowUpRight, Check } from "lucide-react";
+import { ArrowUpRight, BarChart3, Bell, Check, Layers, Lock, Plug, Sparkles, Users, Zap } from "lucide-react";
 import JsonLd from "../seo/JsonLd";
 import Reveal from "../shell/Reveal";
 import SmartLink from "../shell/SmartLink";
-import Mark from "../shell/Marks";
+import ProductLogo from "../shell/ProductLogo";
 import HomeCta from "../home/HomeCta";
 import Breadcrumbs from "../pages/Breadcrumbs";
 import FramedPhoto from "../pages/FramedPhoto";
@@ -11,6 +11,7 @@ import SubNav from "./SubNav";
 import FeatureTabs from "./FeatureTabs";
 import FaqList from "./FaqList";
 import GuardrailsBand from "./GuardrailsBand";
+import { Arrow, IconTile, accent } from "../ui/CardParts";
 import { pageGraph } from "../../../lib/seo/schema";
 
 /**
@@ -20,6 +21,9 @@ import { pageGraph } from "../../../lib/seo/schema";
  *
  * `item` comes from lib/catalog (platforms.js or agents.js).
  */
+/** Rotating icons for capability cards (the data has names, not icons). */
+const CAP_ICONS = [Zap, Layers, BarChart3, Users, Plug, Bell, Lock, Sparkles, Check];
+
 export default function ItemPage({ item, type, parent, kindLabel, related, industries, seo }) {
   const isAgent = type === "agent";
   const subnav = [
@@ -61,7 +65,7 @@ export default function ItemPage({ item, type, parent, kindLabel, related, indus
             <div>
               <div className="sd-enter flex items-center gap-3">
                 <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-sd-line bg-white shadow-[0_4px_12px_-6px_rgba(11,27,51,0.2)]">
-                  <Mark name={item.mark} size={30} color={item.accent} />
+                  <ProductLogo product={item} size={30} />
                 </span>
                 <p className="sd-label">{kindLabel}</p>
               </div>
@@ -112,15 +116,19 @@ export default function ItemPage({ item, type, parent, kindLabel, related, indus
             </Reveal>
             <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {item.capabilities.map((c, i) => (
-                <Reveal key={c.name} delay={(i % 3) * 80} className="sd-card h-full p-7">
-                  <span
-                    className="flex h-10 w-10 items-center justify-center rounded-xl"
-                    style={{ background: `${item.accent}14`, color: item.accent }}
-                    aria-hidden="true"
-                  >
-                    <Check size={18} strokeWidth={2.5} />
-                  </span>
-                  <h3 className="sd-h3 mt-5">{c.name}</h3>
+                <Reveal
+                  key={c.name}
+                  delay={(i % 3) * 80}
+                  className={`sd-fcard is-hoverable h-full p-7 ${i % 4 === 0 ? "sd-fcard-tint" : ""}`}
+                  style={accent(item.accent)}
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <IconTile icon={CAP_ICONS[i % CAP_ICONS.length]} size={48} />
+                    <span className="font-display text-[13px] font-bold tabular-nums text-sd-faint" aria-hidden="true">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <h3 className="sd-h3 mt-6">{c.name}</h3>
                   <p className="mt-2 text-[15.5px] leading-relaxed text-sd-muted">{c.blurb}</p>
                 </Reveal>
               ))}
@@ -166,16 +174,10 @@ export default function ItemPage({ item, type, parent, kindLabel, related, indus
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                 {related.map((r) => (
                   <li key={r.href}>
-                    <Link href={r.href} className="sd-card-link group flex items-center gap-4 p-4">
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sd-surface">
-                        <Mark name={r.mark} size={28} color={r.accent} />
-                      </span>
-                      <span className="flex-1 font-display text-[16.5px] font-semibold tracking-tight text-sd-ink transition-colors group-hover:text-sd-blue">
-                        {r.displayName}
-                      </span>
-                      <span aria-hidden="true" className="text-sd-faint transition-all group-hover:translate-x-1 group-hover:text-sd-blue">
-                        &rarr;
-                      </span>
+                    <Link href={r.href} className="sd-fcard group flex h-full items-center gap-4 p-4" style={accent(r.accent)}>
+                      <IconTile logo={r.logo} mark={r.mark} color={r.accent} size={46} />
+                      <span className="flex-1 font-display text-[16.5px] font-semibold tracking-tight text-sd-ink">{r.displayName}</span>
+                      <Arrow />
                     </Link>
                   </li>
                 ))}

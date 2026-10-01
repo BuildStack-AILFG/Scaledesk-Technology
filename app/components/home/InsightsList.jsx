@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Reveal from "../shell/Reveal";
 import { getAllPosts } from "../../../lib/blog/posts";
-import { getCategory } from "../../../lib/blog/categories";
+import PostCard from "../blog/PostCard";
 
-/** Latest guides from the blog as three article cards. */
+/** Latest guides from the blog, as the same article cards the blog uses. */
 export default function InsightsList() {
   const items = getAllPosts().slice(0, 3);
 
@@ -27,20 +27,7 @@ export default function InsightsList() {
         <ul className="mt-14 grid gap-5 md:grid-cols-3">
           {items.map((a, i) => (
             <Reveal as="li" key={a.slug} delay={i * 80}>
-              <Link href={`/blog/${a.slug}`} className="sd-card-link group flex h-full flex-col p-7">
-                <span className="self-start rounded-full bg-sd-tint px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.08em] text-sd-teal-dark">
-                  {getCategory(a.category)?.name}
-                </span>
-                <span className="mt-5 block flex-1 font-display text-[19px] font-semibold leading-snug tracking-tight text-sd-ink transition-colors group-hover:text-sd-blue">
-                  {a.title}
-                </span>
-                <span className="mt-6 flex items-center justify-between border-t border-sd-line pt-4 text-[14px] text-sd-muted">
-                  {a.readTime}
-                  <span aria-hidden="true" className="text-sd-faint transition-all group-hover:translate-x-1 group-hover:text-sd-blue">
-                    &rarr;
-                  </span>
-                </span>
-              </Link>
+              <PostCard post={a} />
             </Reveal>
           ))}
         </ul>

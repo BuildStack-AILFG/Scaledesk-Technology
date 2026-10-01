@@ -1,9 +1,9 @@
 ---
 title: How the ScaleDesk Platforms Fit Together
-description: An overview of the ScaleDesk platforms: LeadForGrow CRM, TalkForGrow messaging, EngageForGrow social inbox and PeopleForGrow HR, and how they connect.
+description: An overview of the ScaleDesk platforms: LeadForGrow CRM, TalkForGrow messaging, GramForGrow social inbox and PeopleForGrow HR, and how they connect.
 category: company
 date: 2026-09-21
-tags: scaledesk platforms, leadforgrow, talkforgrow, engageforgrow, peopleforgrow
+tags: scaledesk platforms, leadforgrow, talkforgrow, gramforgrow, peopleforgrow
 ---
 
 ScaleDesk builds a family of products for growing businesses. Each one solves a specific problem, and they are designed to work together around a simple idea: help you win customers, keep them, and run your team well. This overview explains what each product is for and how they connect.
@@ -18,9 +18,9 @@ ScaleDesk builds a family of products for growing businesses. Each one solves a 
 
 [TalkForGrow](/products/talkforgrow) is our platform for customer conversations on messaging apps such as WhatsApp. It handles sending, automated replies and a shared inbox for your team. If your customers prefer to message you, this is where those conversations happen.
 
-### EngageForGrow: manage social messages and comments
+### GramForGrow: manage social messages and comments
 
-[EngageForGrow](/products/engageforgrow) brings direct messages and comments from social channels, such as Instagram, into one inbox, with automation for the replies that are routine. It helps you respond to people who find you through social content.
+[GramForGrow](/products/gramforgrow) brings direct messages and comments from social channels, such as Instagram, into one inbox, with automation for the replies that are routine. It helps you respond to people who find you through social content.
 
 ### PeopleForGrow: attendance, payroll and the employee lifecycle
 
@@ -30,7 +30,7 @@ ScaleDesk builds a family of products for growing businesses. Each one solves a 
 
 Think of a customer journey:
 
-1. **A person discovers you** on Instagram and comments or sends a message. EngageForGrow captures it.
+1. **A person discovers you** on Instagram and comments or sends a message. GramForGrow captures it.
 2. **They continue on WhatsApp** to ask about details. TalkForGrow handles the conversation and automated replies.
 3. **Their details become a lead** in LeadForGrow, with the source, conversation and next step.
 4. **Your team follows up** through tasks and reminders, and moves the deal through your pipeline.
@@ -46,7 +46,7 @@ Alongside the platforms, ForGrow AI is our line of AI agents for voice, finance,
 
 - **Losing leads or unsure who follows up?** Start with LeadForGrow.
 - **Customers message you on WhatsApp all day?** Start with TalkForGrow.
-- **Most interest arrives through Instagram?** Start with EngageForGrow.
+- **Most interest arrives through Instagram?** Start with GramForGrow.
 - **Team administration taking too much time?** Start with PeopleForGrow.
 
 Many customers begin with one and add others as needs grow.

@@ -5,6 +5,8 @@ import Reveal from "../components/shell/Reveal";
 import PageHero from "../components/pages/PageHero";
 import HomeCta from "../components/home/HomeCta";
 import JobCard from "../components/careers/JobCard";
+import { IconTile, accent } from "../components/ui/CardParts";
+import { Rocket, Target, TrendingUp } from "lucide-react";
 import { OPPORTUNITIES } from "../data/careers";
 import { buildPageMetadata } from "../../lib/seo/metadata";
 import { pageGraph } from "../../lib/seo/schema";
@@ -27,9 +29,9 @@ const crumbs = [
 ];
 
 const POINTS = [
-  { title: "Real products", body: "You work on platforms and AI agents that real businesses use to grow, not on throwaway projects." },
-  { title: "Ownership", body: "You are trusted to own outcomes, from the first idea to what customers see." },
-  { title: "Room to grow", body: "Work alongside experienced people, and take on more as you show what you can do." },
+  { icon: Rocket, accent: "#0A5FBE", title: "Real products", body: "You work on platforms and AI agents that real businesses use to grow, not on throwaway projects." },
+  { icon: Target, accent: "#7C4DFF", title: "Ownership", body: "You are trusted to own outcomes, from the first idea to what customers see." },
+  { icon: TrendingUp, accent: "#00A3B0", title: "Room to grow", body: "Work alongside experienced people, and take on more as you show what you can do." },
 ];
 
 export default function CareersPage() {
@@ -67,10 +69,16 @@ export default function CareersPage() {
             </Reveal>
             <div className="mt-14 grid gap-5 sm:grid-cols-3">
               {POINTS.map((p, i) => (
-                <Reveal key={p.title} delay={i * 80} className="sd-card h-full p-7">
-                  <span className="font-display text-[15px] font-bold text-sd-teal-dark">{String(i + 1).padStart(2, "0")}</span>
-                  <h3 className="sd-h3 mt-4">{p.title}</h3>
-                  <p className="mt-3 text-[15.5px] leading-relaxed text-sd-muted">{p.body}</p>
+                <Reveal
+                  key={p.title}
+                  delay={i * 80}
+                  className={`sd-fcard is-hoverable h-full p-8 ${i === 0 ? "sd-fcard-dark" : "sd-fcard-tint"}`}
+                  style={i === 0 ? undefined : accent(p.accent)}
+                >
+                  {i === 0 && <span className="sd-fcard-grid" aria-hidden="true" />}
+                  <IconTile icon={p.icon} />
+                  <h3 className={`sd-h3 mt-6 ${i === 0 ? "!text-white" : ""}`}>{p.title}</h3>
+                  <p className={`mt-3 text-[15.5px] leading-relaxed ${i === 0 ? "text-white/75" : "text-sd-muted"}`}>{p.body}</p>
                 </Reveal>
               ))}
             </div>

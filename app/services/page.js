@@ -20,6 +20,15 @@ export const metadata = buildPageMetadata({
   secondaryKeywords: ["Custom Software Development", "CRM Development", "AI Development Company", "Technology Consulting"],
 });
 
+/** Icon and accent per service group (titles from lib/nav.js SERVICE_GROUPS). */
+const GROUP_STYLE = {
+  "AI and automation": { mark: "automate", accent: "#0A5FBE" },
+  "Software development": { mark: "code", accent: "#7C4DFF" },
+  "Business systems": { mark: "crm", accent: "#00A3B0" },
+  "Cloud and DevOps": { mark: "cloud", accent: "#C13584" },
+  "Consulting and design": { mark: "consult", accent: "#E58A00" },
+};
+
 const crumbs = [
   { name: "Home", href: "/" },
   { name: "Services", href: "/services" },
@@ -34,6 +43,7 @@ export default function ServicesHubPage() {
 
   const groups = SERVICES_NAV.map((g) => ({
     title: g.title,
+    ...GROUP_STYLE[g.title],
     items: g.items.map((it) => {
       const slug = it.href.split("/").pop();
       return { name: it.label, href: it.href, blurb: snippet(getService(slug)?.metaDescription, 120) };
@@ -50,7 +60,7 @@ export default function ServicesHubPage() {
           title="Expert services to help you sell more"
           lead="Alongside our own platforms, our team plans, builds and runs custom technology for your business, from AI and automation to software, cloud and data."
         />
-        <HubList groups={groups} />
+        <HubList groups={groups} variant="panels" />
         <HomeCta />
       </main>
     </>

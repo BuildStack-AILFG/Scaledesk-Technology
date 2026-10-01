@@ -54,7 +54,7 @@ The point is a real conversation. When someone replies with their team size or a
 
 Meta monitors messaging behaviour. Sudden bursts of identical messages, complaints and blocks can lead to restrictions. Review [common Instagram automation mistakes](/blog/instagram-automation-mistakes-to-avoid) and keep your messaging useful.
 
-A platform such as [EngageForGrow](/products/engageforgrow) is designed to manage comments and direct messages together, so the conversation that starts in a comment continues in one shared inbox.
+A platform such as [GramForGrow](/products/gramforgrow) is designed to manage comments and direct messages together, so the conversation that starts in a comment continues in one shared inbox.
 
 ## Frequently asked questions
 

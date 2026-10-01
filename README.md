@@ -1,7 +1,7 @@
 # ScaleDesk Technology: website
 
 Marketing site for ScaleDesk Technology, a product company that helps businesses grow their sales with
-software platforms (LeadForGrow, TalkForGrow, EngageForGrow, PeopleForGrow), AI agents (ForGrow AI) and
+software platforms (LeadForGrow, TalkForGrow, GramForGrow, PeopleForGrow), AI agents (ForGrow AI) and
 expert engineering services. Next.js 16 (App Router), React 19, Tailwind CSS 4.
 
 ## Run it

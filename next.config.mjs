@@ -48,6 +48,10 @@ const nextConfig = {
       { source: "/leadforgrow", destination: "/products/leadforgrow-crm", permanent: true },
       { source: "/leadforgrow-crm", destination: "/products/leadforgrow-crm", permanent: true },
       { source: "/talkforgrow", destination: "/products/talkforgrow", permanent: true },
+      // EngageForGrow was renamed GramForGrow
+      { source: "/products/engageforgrow", destination: "/products/gramforgrow", permanent: true },
+      { source: "/engageforgrow", destination: "/products/gramforgrow", permanent: true },
+      { source: "/gramforgrow", destination: "/products/gramforgrow", permanent: true },
       { source: "/product/:slug", destination: "/products/:slug", permanent: true },
       // ── Retired product pages ────────────────────────────────────
       { source: "/products/ai-analytics", destination: "/services/data-pipelines", permanent: true },

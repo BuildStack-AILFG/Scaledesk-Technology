@@ -658,3 +658,221 @@
   mix-blend-mode: multiply;
   pointer-events: none;
 }
+
+/* ═══ Card system v2 ═══════════════════════════════════════════════
+   .sd-fcard           interactive card: accent glow + gradient border on hover
+   .sd-fcard-tint      soft accent-tinted surface (no border)
+   .sd-fcard-dark      navy gradient card for featured / emphasis slots
+   .sd-icon-tile       gradient icon chip in the card's accent
+   .sd-arrow           round arrow button that fills on hover
+   Set the accent per card with style={{ "--accent": "#0A5FBE" }}.
+═══════════════════════════════════════════════════════════════════ */
+[data-shell="corporate"] .sd-fcard {
+  --accent: var(--sd-blue);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--sd-line);
+  border-radius: var(--sd-r-lg);
+  box-shadow: var(--sd-shadow-sm);
+  text-decoration: none;
+  transition:
+    transform 0.35s var(--sd-ease),
+    box-shadow 0.35s var(--sd-ease),
+    border-color 0.35s var(--sd-ease);
+}
+/* Accent glow in the top-right corner */
+[data-shell="corporate"] .sd-fcard::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -40%;
+  right: -30%;
+  width: 80%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 14%, transparent), transparent);
+  opacity: 0.7;
+  transition: opacity 0.4s var(--sd-ease), transform 0.6s var(--sd-ease);
+  pointer-events: none;
+}
+/* Gradient border revealed on hover */
+[data-shell="corporate"] .sd-fcard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 30%, #00a3b0) 60%, transparent 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s var(--sd-ease);
+  pointer-events: none;
+}
+[data-shell="corporate"] a.sd-fcard:hover,
+[data-shell="corporate"] .sd-fcard.is-hoverable:hover {
+  transform: translateY(-4px);
+  border-color: transparent;
+  box-shadow: 0 6px 14px -4px rgba(11, 27, 51, 0.08), 0 24px 44px -16px color-mix(in srgb, var(--accent) 35%, rgba(11, 27, 51, 0.3));
+}
+[data-shell="corporate"] a.sd-fcard:hover::before,
+[data-shell="corporate"] .sd-fcard.is-hoverable:hover::before {
+  opacity: 1;
+  transform: scale(1.15);
+}
+[data-shell="corporate"] a.sd-fcard:hover::after,
+[data-shell="corporate"] .sd-fcard.is-hoverable:hover::after {
+  opacity: 1;
+}
+
+[data-shell="corporate"] .sd-fcard-tint {
+  background: color-mix(in srgb, var(--accent) 6%, #fff);
+  border-color: color-mix(in srgb, var(--accent) 14%, #fff);
+  box-shadow: none;
+}
+
+[data-shell="corporate"] .sd-fcard-dark {
+  --accent: #00a3b0;
+  background:
+    radial-gradient(70% 70% at 100% 0%, rgba(0, 163, 176, 0.38) 0%, transparent 70%),
+    radial-gradient(60% 60% at 0% 100%, rgba(10, 95, 190, 0.4) 0%, transparent 70%),
+    linear-gradient(150deg, #061f4a 0%, #0a2f6b 100%);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+[data-shell="corporate"] .sd-fcard-dark::before {
+  display: none;
+}
+[data-shell="corporate"] .sd-fcard-dark h2,
+[data-shell="corporate"] .sd-fcard-dark h3 {
+  color: #fff;
+}
+/* Faint grid inside dark cards */
+[data-shell="corporate"] .sd-fcard-dark .sd-fcard-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  -webkit-mask-image: radial-gradient(90% 90% at 100% 0%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(90% 90% at 100% 0%, #000 0%, transparent 75%);
+  pointer-events: none;
+}
+
+[data-shell="corporate"] .sd-icon-tile {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 15px;
+  color: var(--accent);
+  background: linear-gradient(140deg, color-mix(in srgb, var(--accent) 18%, #fff) 0%, color-mix(in srgb, var(--accent) 5%, #fff) 100%);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--accent) 22%, transparent),
+    0 6px 14px -8px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+[data-shell="corporate"] .sd-fcard-dark .sd-icon-tile {
+  color: #7fe3ea;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+[data-shell="corporate"] .sd-arrow {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid var(--sd-line-strong);
+  background: #fff;
+  color: var(--sd-ink);
+  font-size: 16px;
+  line-height: 1;
+  transition: background-color 0.3s var(--sd-ease), color 0.3s var(--sd-ease), border-color 0.3s var(--sd-ease), transform 0.3s var(--sd-ease);
+}
+[data-shell="corporate"] .group:hover .sd-arrow {
+  background: var(--sd-navy);
+  border-color: var(--sd-navy);
+  color: #fff;
+  transform: translateX(3px);
+}
+[data-shell="corporate"] .sd-fcard-dark .sd-arrow {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+[data-shell="corporate"] .sd-fcard-dark.group:hover .sd-arrow,
+[data-shell="corporate"] .group:hover .sd-fcard-dark .sd-arrow {
+  background: #fff;
+  border-color: #fff;
+  color: var(--sd-navy);
+}
+
+/* Big gradient numeral for numbered cards */
+[data-shell="corporate"] .sd-numeral {
+  font-family: var(--font-jakarta), var(--font-inter), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  background: linear-gradient(160deg, var(--accent) 0%, color-mix(in srgb, var(--accent) 25%, #fff) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-shell="corporate"] .sd-fcard,
+  [data-shell="corporate"] .sd-fcard::before {
+    transition: none;
+  }
+}
+/* A card that is also a scroll-reveal element keeps both behaviours. */
+[data-shell="corporate"] .sd-fcard.sd-reveal {
+  transition:
+    opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) var(--d, 0ms),
+    transform 0.6s var(--sd-ease),
+    box-shadow 0.35s var(--sd-ease),
+    border-color 0.35s var(--sd-ease);
+}
+
+/* Homepage growth-chart hero: bars rise from the baseline, then the trend line fades in. */
+@keyframes sd-bar-grow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes sd-trend-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+[data-shell="corporate"] .sd-bar-grow {
+  transform-origin: bottom;
+  animation: sd-bar-grow 0.9s var(--sd-ease) both;
+  animation-delay: var(--d, 0ms);
+}
+[data-shell="corporate"] .sd-trend {
+  animation: sd-trend-in 0.6s ease-out 0.9s both;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-shell="corporate"] .sd-bar-grow,
+  [data-shell="corporate"] .sd-trend {
+    animation: none;
+  }
+}

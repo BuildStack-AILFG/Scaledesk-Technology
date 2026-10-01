@@ -71,7 +71,7 @@ Automation that nobody measures stays broken for months.
 - Record leads in your CRM.
 - Review conversations every week.
 
-[EngageForGrow](/products/engageforgrow) is designed to help with this: one shared inbox for messages and comments, automated replies with a route to your team, and a link to your CRM.
+[GramForGrow](/products/gramforgrow) is designed to help with this: one shared inbox for messages and comments, automated replies with a route to your team, and a link to your CRM.
 
 ## Frequently asked questions
 

@@ -42,7 +42,7 @@ An automated greeting covers nights and busy periods. It should tell the custome
 
 ## Connect the inbox to your CRM
 
-An inbox is a conversation tool; a CRM is a relationship tool. When a chat becomes a real lead, it should appear in the CRM with the source, the summary and the next step, so follow-up does not depend on anyone's memory. [LeadForGrow](/products/leadforgrow-crm) and [EngageForGrow](/products/engageforgrow) are designed to work together in this way, with the social inbox feeding leads into the CRM.
+An inbox is a conversation tool; a CRM is a relationship tool. When a chat becomes a real lead, it should appear in the CRM with the source, the summary and the next step, so follow-up does not depend on anyone's memory. [LeadForGrow](/products/leadforgrow-crm) and [GramForGrow](/products/gramforgrow) are designed to work together in this way, with the social inbox feeding leads into the CRM.
 
 ## Measure what matters
 

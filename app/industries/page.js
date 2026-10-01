@@ -43,11 +43,13 @@ export default function IndustriesHubPage() {
           lead="From retail and healthcare to logistics and education, we shape our platforms, agents and services around how each business operates."
         />
         <HubList
+          variant="photos"
           groups={[
             {
               items: INDUSTRIES_NAV.map((i) => ({
                 name: i.label,
                 href: i.href,
+                image: `ind-${i.slug}`,
                 blurb: snippet(getIndustry(i.slug)?.metaDescription, 120),
               })),
             },

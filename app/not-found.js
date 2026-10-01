@@ -1,6 +1,6 @@
 import Link from "next/link";
 import PageHero from "./components/pages/PageHero";
-import Mark from "./components/shell/Marks";
+import { Arrow, IconTile, accent } from "./components/ui/CardParts";
 import { PLATFORMS_NAV } from "../lib/nav";
 
 export const metadata = {
@@ -30,19 +30,13 @@ export default function NotFound() {
           <ul className="grid gap-3 sm:grid-cols-2">
             {PLATFORMS_NAV.map((p) => (
               <li key={p.slug}>
-                <Link href={p.href} className="sd-card-link group flex items-center gap-4 p-4">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sd-surface">
-                    <Mark name={p.mark} size={28} color={p.accent} />
-                  </span>
+                <Link href={p.href} className="sd-fcard group flex h-full items-center gap-4 p-4" style={accent(p.accent)}>
+                  <IconTile logo={p.logo} mark={p.mark} color={p.accent} size={46} />
                   <span className="flex-1">
-                    <span className="block font-display text-[16.5px] font-semibold tracking-tight text-sd-ink transition-colors group-hover:text-sd-blue">
-                      {p.displayName}
-                    </span>
+                    <span className="block font-display text-[16.5px] font-semibold tracking-tight text-sd-ink">{p.displayName}</span>
                     <span className="block text-[14px] text-sd-muted">{p.tagline}</span>
                   </span>
-                  <span aria-hidden="true" className="text-sd-faint transition-all group-hover:translate-x-1 group-hover:text-sd-blue">
-                    &rarr;
-                  </span>
+                  <Arrow />
                 </Link>
               </li>
             ))}

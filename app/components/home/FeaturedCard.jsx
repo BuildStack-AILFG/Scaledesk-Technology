@@ -1,6 +1,6 @@
 import SmartLink from "../shell/SmartLink";
 import Reveal from "../shell/Reveal";
-import Mark from "../shell/Marks";
+import { Arrow, IconTile, accent } from "../ui/CardParts";
 
 /**
  * Featured panel: a gradient promo tile on one side and a clean
@@ -35,17 +35,20 @@ export default function FeaturedCard({ promo, label, link, items, promoSide = "l
         </SmartLink>
       </div>
       <div
-        className={`mt-6 grid flex-1 content-start gap-x-6 gap-y-4 sm:grid-cols-2 ${columns === 3 ? "lg:grid-cols-3" : ""}`}
+        className={`mt-6 grid flex-1 content-start gap-4 sm:grid-cols-2 ${columns === 3 ? "lg:grid-cols-3" : ""}`}
       >
         {items.map((it) => (
-          <SmartLink key={it.name} href={it.href} external={it.external} className="sd-tile group">
+          <SmartLink
+            key={it.name}
+            href={it.href}
+            external={it.external}
+            className="sd-fcard group flex flex-col p-5"
+            style={accent(it.accent)}
+          >
             <span className="flex items-center gap-3.5">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-sd-line bg-white shadow-[0_1px_2px_rgba(11,27,51,0.05)]">
-                <Mark name={it.mark} size={30} color={it.accent} />
-              </span>
-              <span className="sd-tile-name font-display text-[18px] font-semibold leading-tight tracking-tight text-sd-ink transition-colors">
-                {it.name}
-              </span>
+              <IconTile logo={it.logo} mark={it.mark} color={it.accent} size={48} />
+              <span className="flex-1 font-display text-[18px] font-semibold leading-tight tracking-tight text-sd-ink">{it.name}</span>
+              <Arrow className="!h-8 !w-8 !text-[14px]" />
             </span>
             <span className="mt-3 block text-[15px] leading-relaxed text-sd-muted">{it.blurb}</span>
           </SmartLink>

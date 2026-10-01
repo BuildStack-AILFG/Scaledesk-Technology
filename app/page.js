@@ -39,7 +39,7 @@ export const metadata = buildPageMetadata({
     "AI agents for business",
     "LeadForGrow",
     "TalkForGrow",
-    "EngageForGrow",
+    "GramForGrow",
     "PeopleForGrow",
     "ForGrow AI",
   ],
@@ -50,7 +50,7 @@ export default function Home() {
     <>
       <JsonLd data={graph} />
       <main>
-        <section className="sd-wave sd-hero-bleed">
+        <section className="sd-hero-bleed bg-white">
           <HomeHero />
         </section>
 
@@ -79,6 +79,7 @@ export default function Home() {
               blurb: p.descriptor,
               href: p.href,
               mark: p.mark,
+              logo: p.logo,
               accent: p.accent,
             }))}
           />
