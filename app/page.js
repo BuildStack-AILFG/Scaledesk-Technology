@@ -39,7 +39,7 @@ export const metadata = buildPageMetadata({
     "AI agents for business",
     "LeadForGrow",
     "TalkForGrow",
-    "GramForGrow",
+    "DMForGrow",
     "PeopleForGrow",
     "ForGrow AI",
   ],

@@ -25,7 +25,7 @@ const BARS = [
   { ...FORGROW_AI, axis: "Automation" },
   { ...bySlug("peopleforgrow"), axis: "People" },
   { ...bySlug("talkforgrow"), axis: "Conversations" },
-  { ...bySlug("gramforgrow"), axis: "Instagram" },
+  { ...bySlug("dmforgrow"), axis: "Instagram" },
   { ...bySlug("leadforgrow-crm"), axis: "Leads" },
 ].filter((b) => b.href);
 const HEIGHTS = [50, 61, 72, 85, 98]; // % of the chart height
