@@ -48,7 +48,7 @@ const nextConfig = {
       { source: "/leadforgrow", destination: "/products/leadforgrow-crm", permanent: true },
       { source: "/leadforgrow-crm", destination: "/products/leadforgrow-crm", permanent: true },
       { source: "/talkforgrow", destination: "/products/talkforgrow", permanent: true },
-      // EngageForGrow -> GramForGrow -> DMForGrow: keep every old URL working
+      // DMForGrow was renamed twice (EngageForGrow, then its old name below): keep every old URL working
       { source: "/products/engageforgrow", destination: "/products/dmforgrow", permanent: true },
       { source: "/engageforgrow", destination: "/products/dmforgrow", permanent: true },
       { source: "/dmforgrow", destination: "/products/dmforgrow", permanent: true },
